@@ -9,8 +9,8 @@ const jwt = require('jsonwebtoken');
 router.post('/register', async(req, res) => {
     
     // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
-    const { error } = registerValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].messsage);
+    // const { error } = registerValidation(req.body);
+    // if (error) return res.status(400).send(error.details[0].messsage);
 
     // CHECK PASSWORD IF EXIST
     const emailExist = await User.findOne({ username: req.body.username });
