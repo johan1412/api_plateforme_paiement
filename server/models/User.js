@@ -2,8 +2,9 @@ const connection = require("../lib/sequelize");
 const { Model, DataTypes } = require("sequelize");
 const bcryptjs = require("bcryptjs");
 
-class User extends Model {}
+class User extends Model { }
 
+// A modifier
 User.init(
   //Schema
   {
@@ -25,20 +26,23 @@ User.init(
       allowNull: false,
       defaultValue: false,
     },
-    lastname: DataTypes.STRING,
-    firstname: DataTypes.STRING,
+    // lastname: DataTypes.STRING,
+    // firstname: DataTypes.STRING,
     phone: DataTypes.STRING,
+    // contact
     courriel: {
-        type: DataTypes.STRING,
-        validate: {
-          isEmail: true,
-        },
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true,
       },
+    },
     societyName: DataTypes.STRING,
     kbis: DataTypes.STRING,
     confirmationUrl: DataTypes.STRING,
     cancelUrl: DataTypes.STRING,
+    // devise
     currency: DataTypes.STRING,
+    isVer
   },
   {
     sequelize: connection,
@@ -48,8 +52,8 @@ User.init(
 );
 
 User.sync({
-  alter:true,
-  force:true
+  alter: true,
+  force: true
 });
 
 const cryptPassword = /* 1BBCFG34237 */ async (user) => {

@@ -5,7 +5,7 @@
             "server": "localhost",
             "port": 5434,
             "driver": "PostgreSQL",
-            "name": "localhsot",
+            "name": "localhost",
             "database": "app",
             "username": "root",
             "password": "password"
