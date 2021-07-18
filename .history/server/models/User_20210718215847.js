@@ -20,8 +20,13 @@ User.init(
       unique: true,
       allowNull: false,
     },
-    lastName: DataTypes.STRING,
-    firstName: DataTypes.STRING,
+    confirmed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    lastname: DataTypes.STRING,
+    firstname: DataTypes.STRING,
     phone: DataTypes.STRING,
     courriel: {
         type: DataTypes.STRING,
@@ -34,10 +39,7 @@ User.init(
     confirmationUrl: DataTypes.STRING,
     cancelUrl: DataTypes.STRING,
     currency: DataTypes.STRING,
-    isVerified: {
-      type:DataTypes.BOOLEAN,
-      defaultValue:false
-    }
+    isVerified: DataTypes.BOOLEAN,
   },
   {
     sequelize: connection,
