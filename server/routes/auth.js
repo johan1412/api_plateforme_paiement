@@ -14,7 +14,6 @@ router.post('/register', async(req, res) => {
 
     // CHECK PASSWORD IF EXIST
     const emailExist = await User.findOne({where : { username: req.body.username }});
-    console.log("________________________________________________________",emailExist)
     if (emailExist) return res.status(400).send("Email already exists");
     
     // // HASH PASSWORD
@@ -28,7 +27,7 @@ router.post('/register', async(req, res) => {
         firstName: req.body.firstName,
         phone: req.body.phone,
         societyName: req.body.societyName,
-        contact: req.body.courriel,
+        contact: req.body.contact,
         kabis: req.body.kabis, 
         confirmationUrl :req.body.confirmationUrl,
         cancelUrl: req.body.cancelUrl,
