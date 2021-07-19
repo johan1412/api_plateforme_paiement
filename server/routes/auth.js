@@ -13,35 +13,33 @@ router.post('/register', async(req, res) => {
     if (error) return res.status(400).send(error.details[0].messsage);
 
     // CHECK PASSWORD IF EXIST
-    const emailExist = await User.findOne({ username: req.body.username });
+    const emailExist = await User.findOne({where : { username: req.body.username }});
+    console.log("________________________________________________________",emailExist)
     if (emailExist) return res.status(400).send("Email already exists");
     
     // // HASH PASSWORD
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    
     const user = new User({
         username: req.body.username,
         password: hashedPassword,
-        confirmed: hashedPassword,
+        confirmed: false,
         lastName: req.body.lastName,
         firstName: req.body.firstName,
         phone: req.body.phone,
         societyName: req.body.societyName,
-        courriel: req.body.courriel,
-        kabis: req.body.kabis,
-        confirmationUrl :res.body.confirmationUrl,
-        cancelUrl: res.body.cancelUrl,
-        currency:res.body.currency
+        contact: req.body.courriel,
+        kabis: req.body.kabis, 
+        confirmationUrl :req.body.confirmationUrl,
+        cancelUrl: req.body.cancelUrl,
+        currency:req.body.currency
     });
     try {
         const savedUser = await user.save();
-         res.send("je suis la");
         res.send(savedUser);
     } catch (err) {
         res.status(400).send(err);
     }
-    res.send(req.body);
 });
 
 router.post('/login', async(req, res) => {
@@ -63,8 +61,13 @@ router.post('/login', async(req, res) => {
     res.send('Logged in !!!');
 })
 
+router.get('/all', async(req,res) => {
+    const users = await User.findAll();
+    res.send(users);
+});
+
 router.get('/test', async(req, res) => {
-    res.send("hello wold kkk")
+    res.send("test")
 });
 
 module.exports = router;
