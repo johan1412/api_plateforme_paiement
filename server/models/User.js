@@ -40,15 +40,14 @@ User.init(
     // devise
     currency: DataTypes.STRING,
     isVerified: {
-      type:DataTypes.BOOLEAN,
-      defaultValue:false
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   },
   {
     sequelize: connection,
     modelName: "User",
     paranoid: true,
-    tableName: "users"
   }
 );
 
