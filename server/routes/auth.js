@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
-
 router.post('/register', async (req, res) => {
 
     // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
@@ -16,15 +15,9 @@ router.post('/register', async (req, res) => {
     const emailExist = await User.findOne({ where: { username: req.body.username } });
     if (emailExist) return res.status(400).send("Email already exists");
 
-    // // HASH PASSWORD
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    // const hashedPassword = bcrypt.hash(req.body.password, 10, function (err, hash) {
-    //     if (err) { throw (err); }
-    // });
     const user = new User({
         username: req.body.username,
-        password: hashedPassword,
+        password: req.body.password,
         confirmed: false,
         lastName: req.body.lastName,
         firstName: req.body.firstName,
@@ -46,18 +39,12 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
-    // const { error } = loginValidation(req.body);
-    // if (error) return res.status(400).send(error.details[0].messsage);
+    const { error } = loginValidation(req.body);
+    if (error) return res.status(400).send(error.details[0].messsage);
 
     // CHECK PASSWORD IF EXIST
     const user = await User.findOne({ username: req.body.username });
     if (!user) return res.status(400).send("Email is not found");
-
-    bcrypt.hash(req.body.password, 10, function (err, hash) {
-        if (err) { throw (err); }
-
-        bcrypt.compare(req.body.password, hash);
-    });
 
     bcrypt.compare(req.body.password, user.password)
         .then(passwordMatch => passwordMatch ? res.send(passwordMatch) : res.send(passwordMatch))
@@ -74,9 +61,14 @@ router.post('/login', async (req, res) => {
 
 
     // CEEATE AND SIGN A TOKEN
-    // const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    // res.header('auth-token', token).send(token);
-    // res.send('Logged in yes ça marche');
+    try {
+        const token = jwt.sign({ _id: user._id }, "AKJZEDHEJFBKEZFNBJQHDBFJL");
+        res.header('auth-token', token).send(token);
+        res.send('Logged in yes ça marche');
+    } catch (err) {
+        res.status(400).send(err);
+    }
+
 })
 
 router.get('/all', async (req, res) => {
