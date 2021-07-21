@@ -9,7 +9,7 @@ const authRouter = require("./routes/auth");
 const dotenv = require('dotenv');
 
 dotenv.config();
-// app.use(cors()) // Use this after the variable declaration
+app.use(cors()) // Use this after the variable declaration
 
 //Middlewares
 app.use(express.json());
