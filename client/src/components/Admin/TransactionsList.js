@@ -1,19 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 
 function TransactionsList() {
     const [transactions, setTransactions] = useState([]);
+    const inputSearch = useRef(null);
 
     const getTransactions = async () => {
-        const res = await fetch('http://localhost:3001/admin/transactions')
-        const data = await res.json()
-        setTansactions(data)
+        const res = await fetch('http://localhost:3001/admin/transactions');
+        const data = await res.json();
+        setTransactions(data);
     }
 
     useEffect( () => {
         getTransactions()
-    }, [] )
+    }, [] );
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = inputSearch.current.value;
+        const res = await fetch('http://localhost:3001/admin/transactions/some', {
+            method: "POST",
+            body: JSON.stringify(data),
+        });
+        setTransactions(res);
+    }
 
 
     const transactionsList = transactions.map((transaction) => {
@@ -27,23 +38,31 @@ function TransactionsList() {
             <td> {transaction.facturation} </td>
             <td> {transaction.livraison} </td>
             <td> {transaction.panier} </td>
-            <td> {transaction.montant_commande} </td>
+            <td> {transaction.montant_commande} {transaction.currency}</td>
         </tr>
     })
 
     return (
-        <table>
-            <thead>
-                <th>Client</th>
-                <th>Facturation</th>
-                <th>livraison</th>
-                <th>Panier</th>
-                <th>Montant</th>
-            </thead>
-            <tbody>
-                { transactionsList }
-            </tbody>
-        </table>
+        <>
+            <form onSubmit={handleSubmit}>
+                <input ref={inputSearch} type="text" placeholder="chercher une transaction"/>
+                <input type="submit" value="Chercher" />
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Client</th>
+                        <th>Facturation</th>
+                        <th>livraison</th>
+                        <th>Panier</th>
+                        <th>Montant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { transactionsList }
+                </tbody>
+            </table>
+        </>
     );
 }
 

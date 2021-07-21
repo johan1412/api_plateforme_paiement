@@ -1,4 +1,4 @@
-const connection = require("../../lib/sequelize");
+const connection = require("../lib/sequelize");
 const { Model, DataTypes } = require("sequelize");
 
 class Transaction extends Model { }
@@ -12,18 +12,11 @@ Transaction.init(
         firstname: DataTypes.STRING,
         email: DataTypes.STRING,
 
-        facturation: {
-            type: DataTypes.STRING,
-        },
-        livraison: {
-            type: DataTypes.STRING,
-        },
-        panier: {
-            type: DataTypes.STRING,
-        },
-        montant_commande: {
-            type: DataTypes.INTERGER,
-        }
+        facturation: DataTypes.STRING,
+        livraison: DataTypes.STRING,
+        panier: DataTypes.ARRAY,
+        montant_commande: DataTypes.INTEGER,
+        currency: DataTypes.STRING,
     },
     {
         sequelize: connection,
