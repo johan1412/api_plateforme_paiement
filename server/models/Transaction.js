@@ -1,4 +1,4 @@
-const connection = require("../../lib/sequelize");
+const connection = require("../lib/sequelize");
 const { Model, DataTypes } = require("sequelize");
 
 class Transaction extends Model { }
@@ -8,21 +8,25 @@ Transaction.init(
     //Schema
     {
         // infos_client
-        lastname: DataTypes.STRING,
-        firstname: DataTypes.STRING,
-        email: DataTypes.STRING,
-
-        facturation: {
-            type: DataTypes.STRING,
+        consumer: {
+            lastname: DataTypes.STRING,
+            firstname: DataTypes.STRING,
+            email: DataTypes.STRING,
         },
-        livraison: {
-            type: DataTypes.STRING,
+        billingAdress: {
+            adress: DataTypes.STRING,
+            zipCode: DataTypes.STRING,
+            city: DataTypes.STRING,
+            country: DataTypes.STRING,
         },
-        panier: {
-            type: DataTypes.STRING,
-        },
-        montant_commande: {
-            type: DataTypes.INTERGER,
+        cart: DataTypes.ARRAY,
+        totalPrice: DataTypes.INTEGER,
+        currency: DataTypes.STRING,
+        shippingAdress: {
+            adress: DataTypes.STRING,
+            zipCode: DataTypes.STRING,
+            city: DataTypes.STRING,
+            country: DataTypes.STRING,
         }
     },
     {
