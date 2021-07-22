@@ -1,64 +1,57 @@
 
-import './App.css';
-import React, { Component } from 'react';
+import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import AddTransaction from "./components/transaction/AddTransaction";
+import TransactionsList from "./components/transaction/TransactionsList";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
-class App extends Component {
-  state = {
-    response: '',
-    post: '',
-    username: '',
-    password: '',
-    responseToPost: '',
-  };
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-  callApi = async () => {
-    const response = await fetch('http://localhost:3001/users/register');
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-  };
-  handleSubmit = async e => {
-    e.preventDefault();
-    const response = await fetch('http://localhost:3001/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
-      }),
-    });
-    const body = await response.text();
-    this.setState({ responseToPost: body });
-  };
-  render() {
-    return (
-      <div className="App">
-        <p>{this.state.response}</p>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <strong>Register :</strong>
-          </p>
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={e => this.setState({ username: e.target.value })}
-          />
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={e => this.setState({ password: e.target.value })}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <p>{this.state.responseToPost}</p>
+
+function App() {
+  return (
+    <div>
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <a href="/Transaction" className="navbar-brand">
+        Amazon
+        </a>
+        <div className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link to={"/Transactions"} className="nav-link">
+              Transactions
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/"} className="nav-link">
+              New Transaction
+            </Link>
+          </li>
+        </div>
+        <div className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link to={"/Login"} className="nav-link">
+              Login
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/Register"} className="nav-link">
+              Register
+            </Link>
+          </li>
+        </div>
+      </nav>
+      <div className="container mt-3">
+        <Switch>
+          <Route exact path="/Transactions" component={TransactionsList}/>
+          <Route exact path={["/", "/Transaction"]} component={AddTransaction} />
+          <Route path="/Transaction/:id" component={AddTransaction} />
+          <Route path="/Login" component={Login} />
+          <Route path="/Register" component={Register} />
+        </Switch>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
 export default App;
