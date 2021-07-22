@@ -5,46 +5,39 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
+router.post('/register', async (req, res) => {
 
-router.post('/register', async(req, res) => {
-    
     // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
     const { error } = registerValidation(req.body);
     if (error) return res.status(400).send(error.details[0].messsage);
 
     // CHECK PASSWORD IF EXIST
-    const emailExist = await User.findOne({ username: req.body.username });
+    const emailExist = await User.findOne({ where: { username: req.body.username } });
     if (emailExist) return res.status(400).send("Email already exists");
-    
-    // // HASH PASSWORD
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    
+
     const user = new User({
         username: req.body.username,
-        password: hashedPassword,
-        confirmed: hashedPassword,
+        password: req.body.password,
+        confirmed: false,
         lastName: req.body.lastName,
         firstName: req.body.firstName,
         phone: req.body.phone,
         societyName: req.body.societyName,
-        courriel: req.body.courriel,
+        contact: req.body.contact,
         kabis: req.body.kabis,
-        confirmationUrl :res.body.confirmationUrl,
-        cancelUrl: res.body.cancelUrl,
-        currency:res.body.currency
+        confirmationUrl: req.body.confirmationUrl,
+        cancelUrl: req.body.cancelUrl,
+        currency: req.body.currency
     });
     try {
         const savedUser = await user.save();
-         res.send("je suis la");
         res.send(savedUser);
     } catch (err) {
         res.status(400).send(err);
     }
-    res.send(req.body);
 });
 
-router.post('/login', async(req, res) => {
+router.post('/login', async (req, res) => {
     // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
     const { error } = loginValidation(req.body);
     if (error) return res.status(400).send(error.details[0].messsage);
@@ -53,18 +46,38 @@ router.post('/login', async(req, res) => {
     const user = await User.findOne({ username: req.body.username });
     if (!user) return res.status(400).send("Email is not found");
 
+    bcrypt.compare(req.body.password, user.password)
+        .then(passwordMatch => passwordMatch ? res.send(passwordMatch) : res.send(passwordMatch))
+
     // HASH PASSWORD
-    const validPass = await bcrypt.compare(req.body.password, user.password);
-    if (!validPass) return res.status(400).send("Invalid password!!");
+    // try {
+    //     const validPass = await bcrypt.compare(req.body.password, user.password);
+
+    //     if (!validPass) return res.status(400).send("Invalid password !" + req.body.password
+    //         + " diff " + user.password);
+    // } catch (error) {
+    //     res.status(400).send(err);
+    // }
+
 
     // CEEATE AND SIGN A TOKEN
-    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
-    res.send('Logged in !!!');
+    try {
+        const token = jwt.sign({ _id: user._id }, "AKJZEDHEJFBKEZFNBJQHDBFJL");
+        res.header('auth-token', token).send(token);
+        res.send('Logged in yes ça marche');
+    } catch (err) {
+        res.status(400).send(err);
+    }
+
 })
 
-router.get('/test', async(req, res) => {
-    res.send("hello wold")
+router.get('/all', async (req, res) => {
+    const users = await User.findAll();
+    res.send(users);
+});
+
+router.get('/test', async (req, res) => {
+    res.send("test")
 });
 
 module.exports = router;
