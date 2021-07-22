@@ -8,7 +8,7 @@ Transaction.init(
     //Schema
     {
         // infos_client
-        consumer: {
+       /* consumer: {
             lastname: DataTypes.STRING,
             firstname: DataTypes.STRING,
             email: DataTypes.STRING,
@@ -27,7 +27,7 @@ Transaction.init(
             zipCode: DataTypes.STRING,
             city: DataTypes.STRING,
             country: DataTypes.STRING,
-        }
+        } */
     },
     {
         sequelize: connection,
