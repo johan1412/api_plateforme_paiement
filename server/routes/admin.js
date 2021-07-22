@@ -17,13 +17,19 @@ router.post('/transactions/some', (req, res) => {
     const dataReq = req.body;
     TransactionMongo.find({
         $elemMatch: {
-            "lastname": dataReq,
-            "firstname": dataReq,
-            "email": dataReq,
-            "facturation": dataReq,
-            "livraison": dataReq,
-            "panier": dataReq,
-            "montant_commande": dataReq,
+            "consumer.lastname": dataReq,
+            "consumer.firstname": dataReq,
+            "consumer.email": dataReq,
+            "billingAdress.adress": dataReq,
+            "billingAdress.zipCode": dataReq,
+            "billingAdress.city": dataReq,
+            "billingAdress.country": dataReq,
+            "shippingAdress.adress": dataReq,
+            "shippingAdress.zipCode": dataReq,
+            "shippingAdress.city": dataReq,
+            "shippingAdress.country": dataReq,
+            "cart": dataReq,
+            "totalPrice": dataReq,
         }
     })
     .then((data) => {

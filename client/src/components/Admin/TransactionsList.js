@@ -28,17 +28,17 @@ function TransactionsList() {
 
 
     const transactionsList = transactions.map((transaction) => {
-        return <tr key={transaction.username}>
+        return <tr key={transaction.consumer.email}>
             <td>
                 <ul>
-                    <li>{transaction.lastname} {transaction.firstname}</li>
-                    <li>{transaction.email}</li>
+                    <li>{transaction.consumer.lastname} {transaction.consumer.firstname}</li>
+                    <li>{transaction.consumer.email}</li>
                 </ul>
             </td>
             <td> {transaction.facturation} </td>
             <td> {transaction.livraison} </td>
-            <td> {transaction.panier} </td>
-            <td> {transaction.montant_commande} {transaction.currency}</td>
+            <td> {transaction.cart} </td>
+            <td> {transaction.totalPrice} {transaction.currency}</td>
         </tr>
     })
 
