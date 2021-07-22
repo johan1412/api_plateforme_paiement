@@ -66,8 +66,14 @@ router.get('/all', async(req,res) => {
     res.send(users);
 });
 
-router.get('/test', async(req, res) => {
-    res.send("test")
+router.put('/activate/:id', async(req, res) => {
+    const id = req.params.id
+    let user = await User.findOne({ where: { username: id } })
+    user.isVerified = req.body.activate
+    console.log("---------------", req.body.activate)
+    const savedUser = await user.save();
+    res.send(savedUser); 
 });
+
 
 module.exports = router;

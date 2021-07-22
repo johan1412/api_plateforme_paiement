@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+import Switch from "react-switch";
+import MerchantItem from "./MerchantItem";
 
 function MerchantsList() {
     const [merchants, setMerchants] = useState([])
@@ -8,20 +9,25 @@ function MerchantsList() {
         const res = await fetch('http://localhost:3001/users/all')
         const data = await res.json()
         setMerchants(data)
+        console.log(data)
     }
 
-    useEffect( () => {
+    useEffect(() => {
         getMerchants()
-    }, [] )
+    }, [])
 
 
-    const merchantsDom = merchants.map((merchant) => {
-        return <li key={merchant.username}> { merchant.username } </li>
-    } )
+
+   
+
 
     return (
         <ul>
-            { merchantsDom }
+
+            {merchants.map((merchant) => {
+                return <MerchantItem  key={merchant.username} merchantItem={merchant} />
+            })}
+
         </ul>
     );
 }
