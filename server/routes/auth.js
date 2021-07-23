@@ -3,7 +3,6 @@ const User = require('../models/User');
 const { registerValidation, loginValidation } = require('../validation/validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const nodemailer = require("nodemailer");
 
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey("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")
@@ -40,13 +39,13 @@ router.post('/register', async (req, res) => {
             from: 'mbouhadjar1@myges.fr', // Change to your verified sender
             subject: "Registration successful",
             text: "Your registration is complete, you will recieve another email when your account is activated",
-          }
-          sgMail
+        }
+        sgMail
             .send(msg)
             .then(() => {
             })
             .catch((error) => {
-              console.error(error)
+                console.error(error)
             })
         res.send(savedUser);
     } catch (err) {
@@ -88,19 +87,19 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.get('/all', async(req,res) => {
+router.get('/all', async (req, res) => {
     const users = await User.findAll();
     res.send(users);
 });
 
-router.put('/activate/:id', async(req, res) => {
+router.put('/activate/:id', async (req, res) => {
     const id = req.params.id
     let user = await User.findOne({ where: { username: id } })
     let msgText
     user.isVerified = req.body.activate
-    if(req.body.activate){
+    if (req.body.activate) {
         msgText = "Your account has been activated"
-    }else{
+    } else {
         msgText = "Your account has been disabled"
     }
     const savedUser = await user.save();
@@ -109,15 +108,15 @@ router.put('/activate/:id', async(req, res) => {
         from: 'mbouhadjar1@myges.fr', // Change to your verified sender
         subject: msgText,
         text: msgText,
-      }
-      sgMail
+    }
+    sgMail
         .send(msg)
         .then(() => {
         })
         .catch((error) => {
-          console.error(error)
+            console.error(error)
         })
-    res.send(savedUser); 
+    res.send(savedUser);
 });
 
 

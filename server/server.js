@@ -13,7 +13,7 @@ const adminRouter = require("./routes/admin");
 const dotenv = require('dotenv');
 
 var CronJob = require('cron').CronJob;
-var job = new CronJob('0 0 * * * *', function() {
+var job = new CronJob('0 0 * * * *', function () {
     new Scrapper(
         { url: "http://api.exchangeratesapi.io/v1/latest?access_key=52c76c294d6c9b2cbb3dd2a282e28e19" },
         (data) => data.rates,

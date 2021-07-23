@@ -5,8 +5,8 @@ import TextField from '@material-ui/core/TextField';
 const Register = () => {
   const initialRegisterState = {
     id: null,
-    username:"",
-    password:"",
+    username: "",
+    password: "",
     phone: "",
     contact: "",
     societyName: "",
@@ -25,18 +25,18 @@ const Register = () => {
 
   const saveRegister = () => {
     var data = {
-        username: Register.username,
-        password: Register.password,
-        phone: Register.phone,
-        contact: Register.contact,
-        societyName: Register.societyName,
-        kbis: Register.kbis,
-        confirmationUrl: Register.confirmationUrl,
-        cancelUrl: Register.cancelUrl,
-        currency: Register.currency,
+      username: Register.username,
+      password: Register.password,
+      phone: Register.phone,
+      contact: Register.contact,
+      societyName: Register.societyName,
+      kbis: Register.kbis,
+      confirmationUrl: Register.confirmationUrl,
+      cancelUrl: Register.cancelUrl,
+      currency: Register.currency,
     };
 
-    AuthDataService.Register(data)
+    AuthDataService.register(data)
       .then(response => {
         setRegister({
           id: response.data._id,
@@ -49,9 +49,10 @@ const Register = () => {
           confirmationUrl: response.data.confirmationUrl,
           cancelUrl: response.data.cancelUrl,
           currency: response.data.currency,
-          });
+        });
         setSubmitted(true);
-        console.log(response.data);
+        this.props.history.push("/login"),
+          console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -73,134 +74,134 @@ const Register = () => {
           </button>
         </div>
       ) : (
-          
+
         <div>
-            <h3>Sign Up</h3>
-         <br/>
-         <TextField
-          fullWidth
-          id="username" 
-          name="username" 
-          value={Register.username} 
-          onChange={handleInputChange}
-          label="Username"
-          type="email"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-         <TextField
-          fullWidth
-          id="password" 
-          name="password" 
-          value={Register.password} 
-          onChange={handleInputChange}
-          label="Password"
-          type="password"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="phone" 
-          name="phone" 
-          value={Register.phone} 
-          onChange={handleInputChange}
-          label="Phone"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="contact" 
-          name="contact" 
-          value={Register.contact} 
-          onChange={handleInputChange}
-          label="Contact"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="societyName" 
-          name="societyName" 
-          value={Register.societyName} 
-          onChange={handleInputChange}
-          label="Society Name"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-         <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="kbis" 
-          name="kbis" 
-          value={Register.kbis} 
-          onChange={handleInputChange}
-          label="Kbis"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="confirmationUrl" 
-          name="confirmationUrl" 
-          value={Register.confirmationUrl} 
-          onChange={handleInputChange}
-          label="Confirmation Url"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-         <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="cancelUrl" 
-          name="cancelUrl" 
-          value={Register.cancelUrl} 
-          onChange={handleInputChange}
-          label="Cancel Url"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="currency" 
-          name="currency" 
-          value={Register.currency} 
-          onChange={handleInputChange}
-          label="Currency"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
+          <h3>Sign Up</h3>
+          <br />
+          <TextField
+            fullWidth
+            id="username"
+            name="username"
+            value={Register.username}
+            onChange={handleInputChange}
+            label="Username"
+            type="email"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <TextField
+            fullWidth
+            id="password"
+            name="password"
+            value={Register.password}
+            onChange={handleInputChange}
+            label="Password"
+            type="password"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="phone"
+            name="phone"
+            value={Register.phone}
+            onChange={handleInputChange}
+            label="Phone"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="contact"
+            name="contact"
+            value={Register.contact}
+            onChange={handleInputChange}
+            label="Contact"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="societyName"
+            name="societyName"
+            value={Register.societyName}
+            onChange={handleInputChange}
+            label="Society Name"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="kbis"
+            name="kbis"
+            value={Register.kbis}
+            onChange={handleInputChange}
+            label="Kbis"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="confirmationUrl"
+            name="confirmationUrl"
+            value={Register.confirmationUrl}
+            onChange={handleInputChange}
+            label="Confirmation Url"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="cancelUrl"
+            name="cancelUrl"
+            value={Register.cancelUrl}
+            onChange={handleInputChange}
+            label="Cancel Url"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="currency"
+            name="currency"
+            value={Register.currency}
+            onChange={handleInputChange}
+            label="Currency"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
           <button onClick={saveRegister} className="btn btn-success">
             Submit
           </button>
