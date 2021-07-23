@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AuthDataService from "../../services/AuthService";
 import TextField from '@material-ui/core/TextField';
+import { Redirect } from "react-router-dom";
 
 const Register = () => {
   const initialRegisterState = {
@@ -36,7 +37,7 @@ const Register = () => {
         currency: Register.currency,
     };
 
-    AuthDataService.Register(data)
+    AuthDataService.register(data)
       .then(response => {
         setRegister({
           id: response.data._id,
@@ -67,10 +68,8 @@ const Register = () => {
     <div className="submit-form">
       {submitted ? (
         <div>
-          <h4>You logged successfully!</h4>
-          <button className="btn btn-success" onClick={newRegister}>
-            Logout
-          </button>
+         <Redirect to="/login" />
+
         </div>
       ) : (
           
