@@ -3,7 +3,6 @@ const User = require('../models/User');
 const { registerValidation, loginValidation } = require('../validation/validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const nodemailer = require("nodemailer");
 
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey("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")
