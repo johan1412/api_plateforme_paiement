@@ -52,8 +52,7 @@ const Register = () => {
           currency: response.data.currency,
         });
         setSubmitted(true);
-        this.props.history.push("/login"),
-          console.log(response.data);
+        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -69,7 +68,7 @@ const Register = () => {
     <div className="submit-form">
       {submitted ? (
         <div>
-         <Redirect to="/login" />
+          <Redirect to="/login" />
 
         </div>
       ) : (

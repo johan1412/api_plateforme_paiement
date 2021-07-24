@@ -7,7 +7,7 @@ import AddTransaction from "./components/transaction/AddTransaction";
 import TransactionsList from "./components/transaction/TransactionsList";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import MerchantsList from "./components/Admin/MerchantsList"
+import MarchantsList from "./components/Admin/MarchantsList"
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/Transaction" className="navbar-brand">
-        Amazon
+          Amazon
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -29,8 +29,8 @@ function App() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/merchants"} className="nav-link">
-              Merchants
+            <Link to={"/marchants"} className="nav-link">
+              Marchants
             </Link>
           </li>
         </div>
@@ -49,12 +49,12 @@ function App() {
       </nav>
       <div className="container mt-3">
         <Switch>
-          <Route exact path="/Transactions" component={TransactionsList}/>
+          <Route exact path="/Transactions" component={TransactionsList} />
           <Route exact path={["/", "/Transaction"]} component={AddTransaction} />
           <Route path="/Transaction/:id" component={AddTransaction} />
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />
-          <Route path="/merchants" component={MerchantsList} />
+          <Route path="/marchants" component={MarchantsList} />
         </Switch>
       </div>
     </div>
