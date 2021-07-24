@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Transaction = require('../models/Transaction');
+const Transaction = require('../models/sequelize/Transaction');
 const TransactionMongo = require('../models/mongo/Transaction');
 
 
