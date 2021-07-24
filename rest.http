@@ -1,12 +1,17 @@
 
-
-### Test OK
-GET http://localhost:3001/users/test
-
 ### All User OK
 GET http://localhost:3001/users/all
 
-### Register OK
+### Register add user
+POST http://localhost:3001/users/register
+Content-Type: application/json
+
+{
+  "username": "test@test.com",
+  "password": "test"
+}
+
+### Register add user
 POST http://localhost:3001/users/register
 Content-Type: application/json
 
@@ -23,3 +28,16 @@ Content-Type: application/json
   "username": "test2@test.com",
   "password": "testtest"
 }
+
+### EDIT USER
+PUT http://localhost:3001/admin/update/1
+Authorization: token AKJZEDHEJFBKEZFNBJQHDBFJL
+Content-Type: application/json
+
+{
+  "username": "change@test.com"
+}
+
+### DELETE USER
+DELETE  http://localhost:3001/admin/delete/1
+Authorization: token AKJZEDHEJFBKEZFNBJQHDBFJL

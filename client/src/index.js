@@ -5,14 +5,10 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import Demo from './components/demo';
 
-ReactDOM.render(<Demo />, document.querySelector('#root'));
-
-
-// ReactDOM.render(
-//   <BrowserRouter>
-//     <Demo />
-//     {/* <App /> */}
-//   </BrowserRouter>,
-//   document.getElementById("root")
-// );
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
 
