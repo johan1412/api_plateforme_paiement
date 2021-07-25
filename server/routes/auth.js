@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/User');
+const User = require('../models/sequelize/User');
 const { registerValidation, loginValidation } = require('../validation/validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
