@@ -1,6 +1,7 @@
 
 ### All User OK
 GET http://localhost:3001/users/all
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjcyMjk3MTB9.SIVypiNWviSlcttsGRkevzuJDMo-OZveLf-AQaCYAWA
 
 
 
@@ -13,7 +14,7 @@ POST http://localhost:3001/users/register
 Content-Type: application/json
 
 {
-  "username": "new1@test.com",
+  "username": "new5@test.com",
   "password": "test",
   "isVerified" : true
 }
@@ -55,7 +56,7 @@ POST http://localhost:3001/users/login
 Content-Type: application/json
 
 {
-  "username": "new1@test.com",
+  "username": "new5@test.com",
   "password": "test"
 }
 
@@ -78,4 +79,4 @@ Content-Type: application/json
 
 ### DELETE USER
 DELETE  http://localhost:3001/users/delete/38
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjcyMjc1MjB9.AqQeq3eYvbHp2gbSYf_wHHTYN9xKsHtjicAB4Lzg04M
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjcyMjk3MTB9.SIVypiNWviSlcttsGRkevzuJDMo-OZveLf-AQaCYAWA

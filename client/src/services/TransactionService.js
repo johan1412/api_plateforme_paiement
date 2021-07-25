@@ -9,7 +9,7 @@ const get = id => {
 };
 
 const create = data => {
-  return http.post("/transaction", data);
+  return http.post("admin/transaction", data);
 };
 
 const update = (id, data) => {
@@ -19,8 +19,6 @@ const update = (id, data) => {
 const remove = id => {
   return http.delete(`/transaction/${id}`);
 };
-
-
 
 export default {
   getAll,

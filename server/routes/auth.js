@@ -3,10 +3,12 @@ const User = require('../models/sequelize/User');
 const { registerValidation, loginValidation } = require('../validation/validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const verify = require('../lib/security');
+const { isLoggedIn, isNotLoggedIn } = require('../lib/middlewares');
+
 
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey("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")
-
 
 router.post('/register', async (req, res) => {
 
@@ -73,54 +75,17 @@ router.post('/login', async (req, res) => {
     try {
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
         res.header('auth-token', token).send(token);
-        res.send('Logged in yes ça marche');
     } catch (err) {
         res.status(400).send(err);
     }
 })
 
-router.get('/all', async (req, res) => {
-    const users = await User.findAll();
-    res.send(users);
-});
 
-// delete a user
-router.delete('/delete/:id', function (req, res, next) {
-    // Log.i("delete the user with id " + req.params.id);
-    User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
-        if (err) return next(err);
-        res.status(200).json({
-            "success": "deleted the User"
-        });
-    });
+// logout
+router.get('/logout', isLoggedIn, (req, res) => {
+    req.logout();
+    req.session.destroy();
+    res.redirect('/');
 });
-
-router.put('/activate/:id', async (req, res) => {
-    const id = req.params.id
-    let user = await User.findOne({ where: { username: id } })
-    let msgText
-    user.isVerified = req.body.activate
-    if (req.body.activate) {
-        msgText = "Your account has been activated"
-    } else {
-        msgText = "Your account has been disabled"
-    }
-    const savedUser = await user.save();
-    const msg = {
-        to: user.contact, // Change to your recipient
-        from: 'mbouhadjar1@myges.fr', // Change to your verified sender
-        subject: msgText,
-        text: msgText,
-    }
-    sgMail
-        .send(msg)
-        .then(() => {
-        })
-        .catch((error) => {
-            console.error(error)
-        })
-    res.send(savedUser);
-});
-
 
 module.exports = router;
