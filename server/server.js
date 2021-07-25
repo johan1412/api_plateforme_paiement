@@ -9,6 +9,7 @@ const { MongooseGenerator, Scrapper } = require("./scrapper");
 const app = express();
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
+const currencyRouter = require("./routes/currency");
 
 const dotenv = require('dotenv');
 
@@ -33,6 +34,7 @@ app.use(cors());
 //Route Middlewares
 app.use('/users', authRouter);
 app.use('/admin', adminRouter);
+app.use('/currency', currencyRouter);
 
 sequelize.sync({ alter: true })
 

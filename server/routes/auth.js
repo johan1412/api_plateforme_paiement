@@ -92,6 +92,22 @@ router.get('/all', async (req, res) => {
     res.send(users);
 });
 
+router.get('/:id', async(req, res) => {
+    const id = req.params.id;
+    const user = await User.findByPk(id);
+    res.send(user);
+});
+
+router.patch('/:id', async(req, res) => {
+    const id = req.params.id;
+    const data = req.body.data;
+    let user = await User.findByPk(id);
+    user.key_p = data;
+    user.key_s = data;
+    const savedUser = await user.save();
+    res.send(savedUser);
+});
+
 router.put('/activate/:id', async (req, res) => {
     const id = req.params.id
     let user = await User.findOne({ where: { username: id } })

@@ -7,7 +7,8 @@ import AddTransaction from "./components/transaction/AddTransaction";
 import TransactionsList from "./components/transaction/TransactionsList";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import MarchantsList from "./components/Admin/MarchantsList"
+import MarchantsList from "./components/Admin/MarchantsList";
+import MerchandAbout from "./components/Merchand/MerchandAbout";
 
 
 function App() {
@@ -33,6 +34,11 @@ function App() {
               Marchants
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/marchants-about"} className="nav-link">
+              Espace Marchant
+            </Link>
+          </li>
         </div>
         <div className="navbar-nav ml-auto">
           <li className="nav-item">
@@ -55,6 +61,7 @@ function App() {
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />
           <Route path="/marchants" component={MarchantsList} />
+          <Route path="/marchants-about" component={MerchandAbout} />
         </Switch>
       </div>
     </div>

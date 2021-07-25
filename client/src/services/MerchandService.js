@@ -5,7 +5,7 @@ const getAll = () => {
 };
 
 const get = id => {
-  return http.get(`/merchand/transaction/${id}`);
+  return http.get("/merchand/transaction/${id}");
 };
 
 const create = data => {
@@ -13,12 +13,20 @@ const create = data => {
 };
 
 const update = (id, data) => {
-  return http.patch(`/merchand/transaction/${id}`, data);
+  return http.patch("/merchand/transaction/${id}", data);
 };
 
 const remove = id => {
-  return http.delete(`/merchand/transaction/${id}`);
+  return http.delete("/merchand/transaction/${id}");
 };
+
+const getUserInfos = id => {
+    return http.get("/users/${id}");
+}
+
+const deleteCredentials = (id, data) => {
+    return http.patch("/users/${id}", data);
+}
 
 
 
@@ -28,4 +36,6 @@ export default {
   create,
   update,
   remove,
+  getUserInfos,
+  deleteCredentials,
 };

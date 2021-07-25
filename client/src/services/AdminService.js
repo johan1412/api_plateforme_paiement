@@ -13,7 +13,4 @@ const get = id => {
 export default {
   getAll,
   get,
-  create,
-  update,
-  remove,
 };
