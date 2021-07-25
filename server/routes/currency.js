@@ -3,7 +3,7 @@ const Currency = require('../models/mongo/Currency');
 
 
 
-router.get('/currencies', (req, res) => {
+router.get('/all', (req, res) => {
     Currency.find()
     .then((data) => {
         res.send(data);
