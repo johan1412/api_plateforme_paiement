@@ -19,11 +19,6 @@ BillingAddress.init(
   }
 );
 
-BillingAddress.sync({
-  alter: true
-});
-
-
 
 
 module.exports = BillingAddress;

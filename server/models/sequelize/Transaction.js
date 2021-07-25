@@ -1,6 +1,7 @@
 const connection = require("../../lib/sequelize");
 const { Model, DataTypes } = require("sequelize");
 const Cart = require("./Cart");
+const User = require("./User");
 const BillingAddress = require("./BillingAddress");
 const ShippingAddress = require("./ShippingAddress");
 
@@ -21,15 +22,9 @@ Transaction.init(
 );
 
 
-Transaction.hasOne(ShippingAddress,{as:"shipping_address",foreignKey:"shipping_address_id"});
-Transaction.hasOne(BillingAddress,{as:"billing_address",foreignKey:"billing_address_id"});
-Transaction.hasOne(Cart,{as:"cart",foreignKey:"cart_id"});
-
-Transaction.sync({
-    alter: true,
-    force: true
-});
-
+Transaction.belongsTo(ShippingAddress);
+Transaction.belongsTo(BillingAddress);
+Transaction.belongsTo(Cart);
 
 
 module.exports = Transaction;

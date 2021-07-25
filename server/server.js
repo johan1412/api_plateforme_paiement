@@ -34,4 +34,6 @@ app.use(cors());
 app.use('/users', authRouter);
 app.use('/admin', adminRouter);
 
+sequelize.sync({ alter: true })
+
 app.listen(3000, () => console.log("server is listening"));

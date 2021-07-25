@@ -18,10 +18,5 @@ Product.init(
   }
 );
 
-Product.sync({
-    alter: true
-});
-
-
 
 module.exports = Product;

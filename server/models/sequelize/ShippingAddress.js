@@ -20,9 +20,4 @@ ShippingAddress.init(
   }
 );
 
-
-ShippingAddress.sync({
-  alter: true
-});
-
 module.exports = ShippingAddress;

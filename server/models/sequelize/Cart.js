@@ -1,7 +1,7 @@
-const Product = require("./Product");
 
 const connection = require("../../lib/sequelize");
 const { Model, DataTypes } = require("sequelize");
+const Product = require("./Product");
 
 
 class Cart extends Model {}
@@ -18,12 +18,7 @@ Cart.init(
   }
 );
 
-Cart.hasMany(Product,{as:"product",foreignKey: 'product_id'});
-
-Cart.sync({
-  alter: true
-});
-
-
+Cart.hasMany(Product);
+Product.belongsTo(Cart); 
 
 module.exports = Cart;

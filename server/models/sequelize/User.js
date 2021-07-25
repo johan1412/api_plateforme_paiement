@@ -52,12 +52,8 @@ User.init(
     paranoid: true,
   }
 );
-User.hasMany(Transaction,{as:"transaction",foreignKey:"transaction_id"});
 
-User.sync({
-  alter: true
-});
-
+User.hasMany(Transaction);
 
 const cryptPassword = /* 1BBCFG34237 */ async (user) => {
   user.password = await bcryptjs.hash(user.password, await bcryptjs.genSalt());
