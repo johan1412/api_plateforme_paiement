@@ -14,7 +14,7 @@ BillingAddress.init(
   },
   {
     sequelize: connection,
-    modelName: "BillingAddress",
+    modelName: "billingAddress",
     paranoid: true,
   }
 );

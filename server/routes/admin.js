@@ -2,7 +2,6 @@ const router = require('express').Router();
 const Transaction = require('../models/sequelize/Transaction');
 const TransactionMongo = require('../models/mongo/Transaction');
 const User = require('../models/sequelize/User');
-const { where } = require('sequelize/types');
 
 
 /**
@@ -10,13 +9,13 @@ const { where } = require('sequelize/types');
  */
 
 // Afficher tous les user 
-router.get('/all', verify, async (req, res) => {
+router.get('/all', async (req, res) => {
     const users = await User.findAll();
     res.send(users);
 });
 
 // Activater un compte user
-router.put('/activate/:id', verify, async (req, res) => {
+router.put('/activate/:id', async (req, res) => {
     const id = req.params.id
     let user = await User.findOne({ where: { username: id } })
     let msgText
@@ -69,7 +68,7 @@ router.delete('/delete/:id', function (req, res, next) {
 /**
  * PARTIE TRANSACTION
  */
-
+/*
 router.get('/transactions', (req, res) => {
     const transactions = await Transaction.findAll();
     res.send(transactions);
@@ -83,7 +82,7 @@ router.get('/transactions', (req, res) => {
 router.get('/transactions/:id', (req, res) => {
     const transactions = await Transaction.findOne({ where });
     res.send(transactions);
-});
+}); */
 
 router.post('/transactions/some', (req, res) => {
     console.log("tester");

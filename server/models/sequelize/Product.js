@@ -13,7 +13,7 @@ Product.init(
   },
   {
     sequelize: connection,
-    modelName: "Product",
+    modelName: "product",
     paranoid: true,
   }
 );

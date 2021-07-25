@@ -2,6 +2,9 @@ const router = require('express').Router();
 const Transaction = require('../models/sequelize/Transaction');
 const TransactionMongo = require('../models/mongo/Transaction');
 const User = require('../models/sequelize/User');
+const ShippingAddress = require('../models/sequelize/ShippingAddress');
+const Cart = require('../models/sequelize/Cart');
+
 
 /**
  * Le marchand doit pouvoir :
@@ -26,11 +29,31 @@ const User = require('../models/sequelize/User');
  */
 
 // Créer une transaction
-router.get('/transaction', (req, res) => {
-    Transaction.findAll()
-        .then((data) => { res.send(data); })
-        .catch((e) => res.sendStatus(500));
+router.post('/transaction/new', (req, res) => {
+    const transaction = new Transaction(
+        req.body,
+        {
+            include: [
+                {
+                    association: Transaction.ShippingAddress,
+                },
+                {
+                    association: Transaction.BillingAddress
+                },
+                {
+                    association: Transaction.Cart,
+                    include: [ Cart.Products ]
+                },
+
+            ]
+        }
+    );
+    const savedTransaction = transaction.save();
+    console.log(savedTransaction)
+    res.send(savedTransaction);
 });
+
+
 
 // Afficher les transactions du user
 // Afficher les opérations d'une transaction 

@@ -15,7 +15,7 @@ ShippingAddress.init(
   },
   {
     sequelize: connection,
-    modelName: "ShippingAddress",
+    modelName: "shippingAddress",
     paranoid: true,
   }
 );

@@ -9,7 +9,7 @@ const { MongooseGenerator, Scrapper } = require("./scrapper");
 const app = express();
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
-const marchantRouter = require("./routes/admin");
+const marchantRouter = require("./routes/marchant");
 
 const dotenv = require('dotenv');
 
