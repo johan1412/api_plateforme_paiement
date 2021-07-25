@@ -30,7 +30,8 @@ router.post('/register', async (req, res) => {
         kabis: req.body.kabis,
         confirmationUrl: req.body.confirmationUrl,
         cancelUrl: req.body.cancelUrl,
-        currency: req.body.currency
+        currency: req.body.currency,
+        isVerified: req.body.isVerified
     });
     try {
         const savedUser = await user.save();
@@ -54,42 +55,44 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
-    const { error } = loginValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].messsage);
 
-    // CHECK PASSWORD IF EXIST
-    const user = await User.findOne({ username: req.body.username });
-    if (!user) return res.status(400).send("Email is not found");
+    const user = await User.findOne({ where: { username: req.body.username } });
+    if (!user) return res.status(400).send("Invalid email");
 
-    bcrypt.compare(req.body.password, user.password)
-        .then(passwordMatch => passwordMatch ? res.send(passwordMatch) : res.send(passwordMatch))
+    if (!user.isVerified) return res.status(400).send("Invalid account");
 
     // HASH PASSWORD
-    // try {
-    //     const validPass = await bcrypt.compare(req.body.password, user.password);
-
-    //     if (!validPass) return res.status(400).send("Invalid password !" + req.body.password
-    //         + " diff " + user.password);
-    // } catch (error) {
-    //     res.status(400).send(err);
-    // }
-
+    try {
+        const validPass = await bcrypt.compare(req.body.password, user.password);
+        if (!validPass) return res.status(400).send("Invalid password");
+    } catch (error) {
+        res.status(400).send(err);
+    }
 
     // CEEATE AND SIGN A TOKEN
     try {
-        const token = jwt.sign({ _id: user._id }, "AKJZEDHEJFBKEZFNBJQHDBFJL");
+        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
         res.header('auth-token', token).send(token);
         res.send('Logged in yes ça marche');
     } catch (err) {
         res.status(400).send(err);
     }
-
 })
 
 router.get('/all', async (req, res) => {
     const users = await User.findAll();
     res.send(users);
+});
+
+// delete a user
+router.delete('/delete/:id', function (req, res, next) {
+    // Log.i("delete the user with id " + req.params.id);
+    User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
+        if (err) return next(err);
+        res.status(200).json({
+            "success": "deleted the User"
+        });
+    });
 });
 
 router.put('/activate/:id', async (req, res) => {

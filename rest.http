@@ -2,13 +2,20 @@
 ### All User OK
 GET http://localhost:3001/users/all
 
+
+
+#################################################
+#                 REGISTER                      #
+#################################################
+
 ### Register add user
 POST http://localhost:3001/users/register
 Content-Type: application/json
 
 {
-  "username": "test@test.com",
-  "password": "test"
+  "username": "new1@test.com",
+  "password": "test",
+  "isVerified" : true
 }
 
 ### Register add user
@@ -17,6 +24,29 @@ Content-Type: application/json
 
 {
   "username": "test2@test.com",
+  "password": "test"
+}
+
+### Register add user
+POST http://localhost:3001/users/register
+Content-Type: application/json
+
+{
+  "username": "test3@test.com",
+  "password": "test"
+}
+
+
+
+#################################################
+
+
+### Login WIP
+POST http://localhost:3001/users/login
+Content-Type: application/json
+
+{
+  "username": "test@test.com",
   "password": "test"
 }
 
@@ -25,9 +55,16 @@ POST http://localhost:3001/users/login
 Content-Type: application/json
 
 {
-  "username": "test2@test.com",
-  "password": "testtest"
+  "username": "new1@test.com",
+  "password": "test"
 }
+
+
+### ADMIN
+
+### All Transaction 
+GET http://localhost:3001/admin/transactions
+
 
 ### EDIT USER
 PUT http://localhost:3001/admin/update/1
@@ -35,9 +72,10 @@ Authorization: token AKJZEDHEJFBKEZFNBJQHDBFJL
 Content-Type: application/json
 
 {
-  "username": "change@test.com"
+  "username": "change@test.com",
+  "password": ""
 }
 
 ### DELETE USER
-DELETE  http://localhost:3001/admin/delete/1
-Authorization: token AKJZEDHEJFBKEZFNBJQHDBFJL
+DELETE  http://localhost:3001/users/delete/38
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjcyMjc1MjB9.AqQeq3eYvbHp2gbSYf_wHHTYN9xKsHtjicAB4Lzg04M

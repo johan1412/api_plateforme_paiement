@@ -41,7 +41,7 @@ router.post('/transactions/some', (req, res) => {
 
 // @desc delete the user with provided user Id
 // @ access private TODO make it private
-router.delete('users/:userId', (req, res, next) => {
+router.delete('/users/:userId', (req, res, next) => {
     User.findOneAndDelete({ _id: req.params.userId })
         .exec()
         .then(() => res.status(200).json({ message: 'User deleted' }))
@@ -50,7 +50,7 @@ router.delete('users/:userId', (req, res, next) => {
 
 
 //update a user
-router.put('update/:id', function (req, res, next) {
+router.put('/update/:id', function (req, res, next) {
     Log.i("update the user with id " + req.params.id);
     User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
         if (err) return next(err);
@@ -61,7 +61,7 @@ router.put('update/:id', function (req, res, next) {
 });
 
 // delete a user
-router.delete('delete/:id', function (req, res, next) {
+router.delete('/delete/:id', function (req, res, next) {
     Log.i("delete the user with id " + req.params.id);
     User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
         if (err) return next(err);
