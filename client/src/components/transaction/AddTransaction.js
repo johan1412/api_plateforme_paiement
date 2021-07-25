@@ -129,120 +129,134 @@ const AddTransaction = () => {
           
         <div>
             <h3>Add New Tansaction</h3>
-         <br/>
-         <TextField
-          fullWidth
-          id="firstName" 
-          name="firstName" 
-          value={Transaction.firstName} 
-          onChange={handleInputChange}
-          label="First Name"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-         <TextField
-          fullWidth
-          id="lastName" 
-          name="lastName" 
-          value={Transaction.lastName} 
-          onChange={handleInputChange}
-          label="Last Name"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="address" 
-          name="address" 
-          value={Transaction.address} 
-          onChange={handleInputChange}
-          label="Address"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="zipCode" 
-          name="zipCode" 
-          value={Transaction.zipCode} 
-          onChange={handleInputChange}
-          label="Zip Code"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="city" 
-          name="city" 
-          value={Transaction.city} 
-          onChange={handleInputChange}
-          label="City"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-        <TextField
-          fullWidth
-          id="country" 
-          name="country" 
-          value={Transaction.country} 
-          onChange={handleInputChange}
-          label="Country"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-         <TextField
-         fullWidth
-          id="totalPrice" 
-          name="totalPrice"
-          value={Transaction.totalPrice} 
-          onChange={handleInputChange}
-          label="Total Price"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-         <br/>
-        <br/>
-         <TextField
-         fullWidth
-          id="currency" 
-          name="currency"
-          value={Transaction.currency}
-          onChange={handleInputChange}
-          label="Currency"
-          type="text"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <br/>
-        <br/>
-          <button onClick={saveTransaction} className="btn btn-success">
-            Submit
-          </button>
+            <br/><br />
+            <div className="row">
+                <div className="col-6">
+                    <TextField
+                        fullWidth
+                        id="firstName" 
+                        name="firstName" 
+                        value={Transaction.firstName} 
+                        onChange={handleInputChange}
+                        label="First Name"
+                        type="text"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </div>
+                <div className="col-6">
+                    <TextField
+                        fullWidth
+                        id="lastName" 
+                        name="lastName" 
+                        value={Transaction.lastName} 
+                        onChange={handleInputChange}
+                        label="Last Name"
+                        type="text"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <TextField
+                fullWidth
+                id="address" 
+                name="address" 
+                value={Transaction.address} 
+                onChange={handleInputChange}
+                label="Address"
+                type="text"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+            />
+            <br/>
+            <br/>
+            <div className="row">
+                <div className="col-4">
+                    <TextField
+                        fullWidth
+                        id="zipCode" 
+                        name="zipCode" 
+                        value={Transaction.zipCode} 
+                        onChange={handleInputChange}
+                        label="Zip Code"
+                        type="text"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </div>
+                <div className="col-8">
+                    <TextField
+                        fullWidth
+                        id="city" 
+                        name="city" 
+                        value={Transaction.city} 
+                        onChange={handleInputChange}
+                        label="City"
+                        type="text"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <TextField
+                fullWidth
+                id="country" 
+                name="country" 
+                value={Transaction.country} 
+                onChange={handleInputChange}
+                label="Country"
+                type="text"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+            />
+            <br/>
+            <br/>
+            <div className="row">
+                <div className="col-6">
+                    <TextField
+                        fullWidth
+                        id="totalPrice" 
+                        name="totalPrice"
+                        value={Transaction.totalPrice} 
+                        onChange={handleInputChange}
+                        label="Total Price"
+                        type="number"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </div>
+                <div className="col-6">
+                    <TextField
+                        fullWidth
+                        id="currency" 
+                        name="currency"
+                        value={Transaction.currency}
+                        onChange={handleInputChange}
+                        label="Currency"
+                        type="text"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <button onClick={saveTransaction} className="btn btn-success">
+                Submit
+            </button>
         </div>
       )}
     </div>

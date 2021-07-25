@@ -76,6 +76,7 @@ const Register = () => {
         <div>
           <h3>Sign Up</h3>
           <br />
+          <br />
           <TextField
             fullWidth
             id="username"
@@ -88,6 +89,8 @@ const Register = () => {
               shrink: true,
             }}
           />
+          <br />
+          <br />
           <TextField
             fullWidth
             id="password"

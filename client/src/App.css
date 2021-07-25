@@ -1,3 +1,12 @@
+.navbar .nav-link {
+    letter-spacing: 3px;
+    text-transform: capitalize;
+}
+
+.navbar .nav-item {
+    margin: 0px 10px;
+}
+
 .list {
     text-align: left;
     max-width: 750px;
@@ -5,8 +14,12 @@
 }
 
 .submit-form {
-    max-width: 300px;
+    max-width: 500px;
     margin: auto;
+}
+
+.submit-form h3 {
+    text-align: center;
 }
 
 .edit-form {

@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/Transaction" className="navbar-brand">
+        <a href="/Transaction" className="navbar-brand mr-5 px-3">
           Amazon
         </a>
         <div className="navbar-nav mr-auto">

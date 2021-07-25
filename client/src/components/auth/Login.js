@@ -54,32 +54,35 @@ const Login = () => {
       ) : (
           
         <div>
-            <h3>Sign in</h3>
-         <br/>
-         <TextField
-          fullWidth
-          id="username" 
-          name="username" 
-          value={Login.username} 
-          onChange={handleInputChange}
-          label="Username"
-          type="email"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-         <TextField
-          fullWidth
-          id="password" 
-          name="password" 
-          value={Login.password} 
-          onChange={handleInputChange}
-          label="Password"
-          type="password"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
+            <h3 className="mb-5">Sign in</h3>
+            <br />
+            <br />
+            <TextField
+                fullWidth
+                id="username" 
+                name="username" 
+                value={Login.username} 
+                onChange={handleInputChange}
+                label="Username"
+                type="email"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+            />
+            <br />
+            <br />
+            <TextField
+                fullWidth
+                id="password" 
+                name="password" 
+                value={Login.password} 
+                onChange={handleInputChange}
+                label="Password"
+                type="password"
+                InputLabelProps={{
+                    shrink: true,
+                }}
+            />
         <br/>
         <br/>
           <button onClick={saveLogin} className="btn btn-success">

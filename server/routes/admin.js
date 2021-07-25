@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Transaction = require('../models/sequelize/Transaction');
 const TransactionMongo = require('../models/mongo/Transaction');
-const User = require('../models/User');
+const User = require('../models/sequelize/User');
 
 
 router.get('/transactions', (req, res) => {
