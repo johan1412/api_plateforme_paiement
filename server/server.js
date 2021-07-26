@@ -1,16 +1,14 @@
-
 const sequelize = require("./lib/sequelize");
 const express = require("express");
 const cors = require("cors");
 const Currency = require("./models/mongo/Currency");
-
 const { MongooseGenerator, Scrapper } = require("./scrapper");
-
 const app = express();
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
 const currencyRouter = require("./routes/currency");
 const marchantRouter = require("./routes/admin");
+const payment = require("./routes/payment");
 
 const dotenv = require('dotenv');
 
@@ -37,6 +35,7 @@ app.use('/users', authRouter);
 app.use('/admin', adminRouter);
 app.use('/currency', currencyRouter);
 app.use('/marchant', marchantRouter);
+app.use('/payment', payment);
 
 sequelize.sync({ alter: true })
 

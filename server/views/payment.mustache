@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+<ul>
+    {{#items}}
+        <li>{{title}} {{quantity}}</li>
+    {{/items}}
+</ul>
+{{#success}}Payment proceed{{/success}}
+<form method="POST">
+    <input name="cardNumber"/>
+    <input name="cardExpirationDate"/>
+    <input name="cardCVV"/>
+    <input type="submit" value="pay"/>
+</form>
+</body>
+</html>
