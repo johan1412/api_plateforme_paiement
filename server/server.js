@@ -9,6 +9,12 @@ const adminRouter = require("./routes/admin");
 const currencyRouter = require("./routes/currency");
 const marchantRouter = require("./routes/admin");
 const payment = require("./routes/payment");
+const mustacheExpress = require("mustache-express");
+
+app.engine("mustache", mustacheExpress());
+app.set("view engine", "mustache");
+app.set("views", __dirname + "/views");
+app.use(express.static('public'));
 
 const dotenv = require('dotenv');
 

@@ -1,4 +1,8 @@
-const router = require("express").Router();
+const { Router } = require("express");
+const fetch = require('node-fetch');
+
+
+const router = Router();
 
 router
     .get("/", (req, res) => {
@@ -7,11 +11,9 @@ router
         });
     })
     .post("/", (req, res) => {
-        console.log(req.body);
-        res.render("payment", {
-            success: true,
-            items: [{ title: "spoon", quantity: "1" }],
-        });
+        fetch('http://psp/psp', { method: 'POST'})
+            .then(res => res.json()) // expecting a json response
+            .then(json => console.log(json));
     });
 
 module.exports = router;
