@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import TransactionDataService from "../../services/TransactionService";
+import TransactionDataService from "../../services/MarchantService";
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
-    button: {
-      margin: theme.spacing(1),
-    },
-  }));
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const TransactionsList = () => {
   const [Transactions, setTransactions] = useState([]);
@@ -81,7 +81,7 @@ const TransactionsList = () => {
               </label>{" "}
               {currentTransaction.totalPrice}
               {currentTransaction.currency}
-               
+
             </div>
             <div>
               <label>
@@ -111,9 +111,9 @@ const TransactionsList = () => {
               to={"/Transactions/" + currentTransaction._id}
               className="badge badge-warning"
             >
-            <Button size="small" className={classes.margin}>
-             Edit
-            </Button>
+              <Button size="small" className={classes.margin}>
+                Edit
+              </Button>
             </Link>
           </div>
         ) : (

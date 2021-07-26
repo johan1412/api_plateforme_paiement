@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TransactionDataService from "../../services/TransactionService";
+import TransactionDataService from "../../services/MarchantService";
 import TextField from '@material-ui/core/TextField';
 
 
@@ -28,24 +28,24 @@ import TextField from '@material-ui/core/TextField';
 const AddTransaction = () => {
   const initialTransactionState = {
     id: null,
-    customer:{
+    customer: {
       lastName: "",
       firstName: "",
     },
     billingAddress: {
-          address: "",
-          zipCode: "",
-          city: "",
-          country: "",
+      address: "",
+      zipCode: "",
+      city: "",
+      country: "",
     },
     cart: [],
-    totalPrice:0,
+    totalPrice: 0,
     currency: "",
     shippingAddress: {
-          address: "",
-          zipCode: "",
-          city: "",
-          country: "",
+      address: "",
+      zipCode: "",
+      city: "",
+      country: "",
     }
   };
   const [Transaction, setTransaction] = useState(initialTransactionState);
@@ -58,24 +58,24 @@ const AddTransaction = () => {
 
   const saveTransaction = () => {
     var data = {
-      customer:{
+      customer: {
         lastName: Transaction.lastName,
         firstName: Transaction.firstName,
       },
       billingAddress: {
-            address: Transaction.address,
-            zipCode: Transaction.zipCode,
-            city: Transaction.city,
-            country: Transaction.country,
+        address: Transaction.address,
+        zipCode: Transaction.zipCode,
+        city: Transaction.city,
+        country: Transaction.country,
       },
       cart: Transaction.cart,
       totalPrice: Transaction.totalPrice,
       currency: Transaction.currency,
       shippingAddress: {
-            address: Transaction.address,
-            zipCode: Transaction.zipCode,
-            city: Transaction.city,
-            country: Transaction.country,
+        address: Transaction.address,
+        zipCode: Transaction.zipCode,
+        city: Transaction.city,
+        country: Transaction.country,
       }
     };
 
@@ -83,24 +83,24 @@ const AddTransaction = () => {
       .then(response => {
         setTransaction({
           id: response.data._id,
-          customer:{
+          customer: {
             lastName: response.data.customer.lastName,
             firstName: response.data.customer.firstName,
           },
           billingAddress: {
-                address: response.data.billingAddress.address,
-                zipCode: response.data.billingAddress.zipCode,
-                city: response.data.billingAddress.city,
-                country: response.data.billingAddress.country,
+            address: response.data.billingAddress.address,
+            zipCode: response.data.billingAddress.zipCode,
+            city: response.data.billingAddress.city,
+            country: response.data.billingAddress.country,
           },
           cart: response.data.cart,
-          totalPrice:response.data.totalPrice,
+          totalPrice: response.data.totalPrice,
           currency: response.data.currency,
           shippingAddress: {
-                address: response.data.shippingAddress.currency,
-                zipCode: response.data.shippingAddress.zipCode,
-                city: response.data.shippingAddress.city,
-                country: response.data.shippingAddress.country,
+            address: response.data.shippingAddress.currency,
+            zipCode: response.data.shippingAddress.zipCode,
+            city: response.data.shippingAddress.city,
+            country: response.data.shippingAddress.country,
           }
         });
         setSubmitted(true);
@@ -126,137 +126,137 @@ const AddTransaction = () => {
           </button>
         </div>
       ) : (
-          
+
         <div>
-            <h3>Add New Tansaction</h3>
-            <br/><br />
-            <div className="row">
-                <div className="col-6">
-                    <TextField
-                        fullWidth
-                        id="firstName" 
-                        name="firstName" 
-                        value={Transaction.firstName} 
-                        onChange={handleInputChange}
-                        label="First Name"
-                        type="text"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </div>
-                <div className="col-6">
-                    <TextField
-                        fullWidth
-                        id="lastName" 
-                        name="lastName" 
-                        value={Transaction.lastName} 
-                        onChange={handleInputChange}
-                        label="Last Name"
-                        type="text"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </div>
-            </div>
-            <br/>
-            <br/>
-            <TextField
+          <h3>Add New Tansaction</h3>
+          <br /><br />
+          <div className="row">
+            <div className="col-6">
+              <TextField
                 fullWidth
-                id="address" 
-                name="address" 
-                value={Transaction.address} 
+                id="firstName"
+                name="firstName"
+                value={Transaction.firstName}
                 onChange={handleInputChange}
-                label="Address"
+                label="First Name"
                 type="text"
                 InputLabelProps={{
-                    shrink: true,
+                  shrink: true,
                 }}
-            />
-            <br/>
-            <br/>
-            <div className="row">
-                <div className="col-4">
-                    <TextField
-                        fullWidth
-                        id="zipCode" 
-                        name="zipCode" 
-                        value={Transaction.zipCode} 
-                        onChange={handleInputChange}
-                        label="Zip Code"
-                        type="text"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </div>
-                <div className="col-8">
-                    <TextField
-                        fullWidth
-                        id="city" 
-                        name="city" 
-                        value={Transaction.city} 
-                        onChange={handleInputChange}
-                        label="City"
-                        type="text"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </div>
+              />
             </div>
-            <br/>
-            <br/>
-            <TextField
+            <div className="col-6">
+              <TextField
                 fullWidth
-                id="country" 
-                name="country" 
-                value={Transaction.country} 
+                id="lastName"
+                name="lastName"
+                value={Transaction.lastName}
                 onChange={handleInputChange}
-                label="Country"
+                label="Last Name"
                 type="text"
                 InputLabelProps={{
-                    shrink: true,
+                  shrink: true,
                 }}
-            />
-            <br/>
-            <br/>
-            <div className="row">
-                <div className="col-6">
-                    <TextField
-                        fullWidth
-                        id="totalPrice" 
-                        name="totalPrice"
-                        value={Transaction.totalPrice} 
-                        onChange={handleInputChange}
-                        label="Total Price"
-                        type="number"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </div>
-                <div className="col-6">
-                    <TextField
-                        fullWidth
-                        id="currency" 
-                        name="currency"
-                        value={Transaction.currency}
-                        onChange={handleInputChange}
-                        label="Currency"
-                        type="text"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </div>
+              />
             </div>
-            <br/>
-            <br/>
-            <button onClick={saveTransaction} className="btn btn-success">
-                Submit
-            </button>
+          </div>
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="address"
+            name="address"
+            value={Transaction.address}
+            onChange={handleInputChange}
+            label="Address"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <div className="row">
+            <div className="col-4">
+              <TextField
+                fullWidth
+                id="zipCode"
+                name="zipCode"
+                value={Transaction.zipCode}
+                onChange={handleInputChange}
+                label="Zip Code"
+                type="text"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+            <div className="col-8">
+              <TextField
+                fullWidth
+                id="city"
+                name="city"
+                value={Transaction.city}
+                onChange={handleInputChange}
+                label="City"
+                type="text"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+          <br />
+          <br />
+          <TextField
+            fullWidth
+            id="country"
+            name="country"
+            value={Transaction.country}
+            onChange={handleInputChange}
+            label="Country"
+            type="text"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <br />
+          <br />
+          <div className="row">
+            <div className="col-6">
+              <TextField
+                fullWidth
+                id="totalPrice"
+                name="totalPrice"
+                value={Transaction.totalPrice}
+                onChange={handleInputChange}
+                label="Total Price"
+                type="number"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+            <div className="col-6">
+              <TextField
+                fullWidth
+                id="currency"
+                name="currency"
+                value={Transaction.currency}
+                onChange={handleInputChange}
+                label="Currency"
+                type="text"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+            </div>
+          </div>
+          <br />
+          <br />
+          <button onClick={saveTransaction} className="btn btn-success">
+            Submit
+          </button>
         </div>
       )}
     </div>

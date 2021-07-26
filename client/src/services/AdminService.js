@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "../http-common/http-common-admin";
 
 const getAll = () => {
   return http.get("/transaction");
@@ -9,7 +9,7 @@ const get = id => {
 };
 
 const create = data => {
-  return http.post("admin/transaction", data);
+  return http.post("/transaction", data);
 };
 
 const update = (id, data) => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AuthDataService from "../../services/AuthService";
+import AuthDataService from "../../services/MarchantService";
 import TextField from '@material-ui/core/TextField';
 import { Redirect } from "react-router-dom";
 

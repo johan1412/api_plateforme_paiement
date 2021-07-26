@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
-import Demo from './components/demo';
+import BackOffice from './components/BackOffice/Dashboard';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  // <BrowserRouter>
+  //   <App />
+  // </BrowserRouter>
+  <BackOffice />,
   document.getElementById("root")
 );
 
