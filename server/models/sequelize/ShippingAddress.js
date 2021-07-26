@@ -8,14 +8,14 @@ class ShippingAddress extends Model {}
 ShippingAddress.init(
   //Schema
   {
-    adress: DataTypes.STRING,
+    address: DataTypes.STRING,
     zipCode: DataTypes.STRING,
     city: DataTypes.STRING,
     country: DataTypes.STRING,
   },
   {
     sequelize: connection,
-    modelName: "ShippingAddress",
+    modelName: "shippingAddress",
     paranoid: true,
   }
 );

@@ -7,9 +7,12 @@ const Currency = require("./models/mongo/Currency");
 const { MongooseGenerator, Scrapper } = require("./scrapper");
 
 const app = express();
-const authRouter = require("./routes/auth");
-const adminRouter = require("./routes/admin");
-const marchantRouter = require("./routes/admin");
+
+// Routes
+const authRouter = require("./routes/AuthRouter");
+const currencyRouter = require("./routes/CurrencyRouter");
+const transactionRouter = require("./routes/TransactionRouter");
+const userRouter = require("./routes/UserRouter");
 
 const dotenv = require('dotenv');
 
@@ -32,10 +35,9 @@ app.use(express.urlencoded());
 app.use(cors());
 
 //Route Middlewares
-app.use('/users', authRouter);
-app.use('/admin', adminRouter);
-app.use('/marchant', marchantRouter);
-
-sequelize.sync({ alter: true })
+app.use('/users', userRouter);
+app.use('/auth', authRouter);
+app.use('/currency', currencyRouter);
+app.use('/transactions', transactionRouter);
 
 app.listen(3000, () => console.log("server is listening"));

@@ -1,63 +1,50 @@
 
 ### All User OK
-GET http://localhost:3001/users/all
+GET http://localhost:3001/users
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjcyMjk3MTB9.SIVypiNWviSlcttsGRkevzuJDMo-OZveLf-AQaCYAWA
 
+### Get User OK
+GET http://localhost:3001/users/2
 
+### All User OK
+DELETE http://localhost:3001/users/1
 
-#################################################
-#                 REGISTER                      #
-#################################################
-
-### Register add user
-POST http://localhost:3001/users/register
+### Update User 
+PUT http://localhost:3001/users/1
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjczMTA4NjV9._UOSMaztyLeDIRo4vYOMACalhe8J7ARovpd4GZ3j6jE
 Content-Type: application/json
 
 {
-  "username": "new5@test.com",
-  "password": "test",
-  "isVerified" : true
-}
-
-### Register add user
-POST http://localhost:3001/users/register
-Content-Type: application/json
-
-{
-  "username": "test2@test.com",
-  "password": "test"
-}
-
-### Register add user
-POST http://localhost:3001/users/register
-Content-Type: application/json
-
-{
-  "username": "test3@test.com",
-  "password": "test"
+ "username" : "yanis2@test.fr",
+ "password" : "test",
+ "lastName" : "khrfda",
+ "firstName" : "khdfra",
+ "phone" : "0616209779",
+ "societyName" : "AAAA",
+ "contact" : "pipouzzz21@gmail.com",
+ "kabis" : "9854",
+ "confirmationUrl" : "test.fr",
+ "cancelUrl" : "test.com",
+ "currency" : "eur"
 }
 
 
-
-#################################################
-
-
-### Login WIP
-POST http://localhost:3001/users/login
+### Register add user
+POST http://localhost:3001/auth/register
 Content-Type: application/json
 
 {
-  "username": "test@test.com",
-  "password": "test"
+  "username": "yanis@test.com",
+  "password": "password"
 }
 
 ### Login WIP
-POST http://localhost:3001/users/login
+POST http://localhost:3001/auth/login
 Content-Type: application/json
 
 {
-  "username": "new5@test.com",
-  "password": "test"
+  "username" : "yanis@test.fr",
+  "password" : "test"
 }
 
 
@@ -65,18 +52,3 @@ Content-Type: application/json
 
 ### All Transaction 
 GET http://localhost:3001/admin/transactions
-
-
-### EDIT USER
-PUT http://localhost:3001/admin/update/1
-Authorization: token AKJZEDHEJFBKEZFNBJQHDBFJL
-Content-Type: application/json
-
-{
-  "username": "change@test.com",
-  "password": ""
-}
-
-### DELETE USER
-DELETE  http://localhost:3001/users/delete/38
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjcyMjk3MTB9.SIVypiNWviSlcttsGRkevzuJDMo-OZveLf-AQaCYAWA

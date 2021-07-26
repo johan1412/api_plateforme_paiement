@@ -7,7 +7,8 @@ import AddTransaction from "./components/transaction/AddTransaction";
 import TransactionsList from "./components/transaction/TransactionsList";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import MarchantsList from "./components/Admin/MarchantsList"
+import MerchantsList from "./components/Admin/MerchantsList";
+import MerchandAbout from "./components/Merchand/MerchandAbout";
 
 
 function App() {
@@ -30,7 +31,12 @@ function App() {
           </li>
           <li className="nav-item">
             <Link to={"/marchants"} className="nav-link">
-              Marchants
+              Merchants
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to={"/marchants-about"} className="nav-link">
+              Espace Merchant
             </Link>
           </li>
         </div>
@@ -54,7 +60,8 @@ function App() {
           <Route path="/Transaction/:id" component={AddTransaction} />
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />
-          <Route path="/marchants" component={MarchantsList} />
+          <Route path="/marchants" component={MerchantsList} />
+          <Route path="/marchants-about" component={MerchandAbout} />
         </Switch>
       </div>
     </div>

@@ -1,12 +1,11 @@
 const connection = require("../../lib/sequelize");
-const { Model, DataTypes} = require("sequelize");
- const Transaction = require("./Transaction");
+const { Model, DataTypes } = require("sequelize");
+const Transaction = require("./Transaction");
 
 const bcryptjs = require("bcryptjs");
 
 class User extends Model { }
 
-// A modifier
 User.init(
   //Schema
   {
@@ -22,11 +21,6 @@ User.init(
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
-    },
-    confirmed: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
     },
     phone: DataTypes.STRING,
     contact: {
@@ -44,12 +38,12 @@ User.init(
     isVerified: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
-    }
+    },
+    roles: DataTypes.ENUM("MARCHAND", "ADMIN")
   },
   {
     sequelize: connection,
-    modelName: "User",
-    paranoid: true,
+    modelName: "user",
   }
 );
 
@@ -58,8 +52,8 @@ User.hasMany(Transaction);
 const cryptPassword = /* 1BBCFG34237 */ async (user) => {
   user.password = await bcryptjs.hash(user.password, await bcryptjs.genSalt());
 };
+
 User.addHook("beforeCreate", /* 1BBCFG34237 */ cryptPassword);
 User.addHook("beforeUpdate", /* 1BBCFG34237 */ cryptPassword);
-//User.removeHook("beforeCreate", /* 1BBCFG34237 */ cryptPassword);
 
 module.exports = User;

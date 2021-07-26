@@ -2,13 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a99a78ba-2ba5-4e29-85e5-5ec2db0b6c81" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/Merchand/MerchandAbout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/services/AdminService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/services/MerchandService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/lib/middlewares.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/marchant.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Transaction.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/User.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/TransactionsList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/transaction/AddTransaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/transaction/AddTransaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/transaction/TransactionsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/transaction/TransactionsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/TransactionService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest.http" beforeDir="false" afterPath="$PROJECT_DIR$/rest.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/lib/security.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/lib/security.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/currency.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/currency.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +33,11 @@
     <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/transaction-model-requests" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
@@ -56,5 +75,8 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

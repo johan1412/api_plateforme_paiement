@@ -7,7 +7,7 @@ class Operation extends Model { }
 Operation.init(
     //Schema
     {
-        quantities: DataTypes.INTEGER
+        name: DataTypes.STRING
     },
     {
         sequelize: connection,

@@ -7,14 +7,14 @@ class BillingAddress extends Model {}
 BillingAddress.init(
   //Schema
   {
-    adress: DataTypes.STRING,
+    address: DataTypes.STRING,
     zipCode: DataTypes.STRING,
     city: DataTypes.STRING,
     country: DataTypes.STRING,
   },
   {
     sequelize: connection,
-    modelName: "BillingAddress",
+    modelName: "billingAddress",
     paranoid: true,
   }
 );

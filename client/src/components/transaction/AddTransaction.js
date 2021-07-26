@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TransactionDataService from "../../services/MarchantService";
+import TransactionDataService from "../../services/MerchandService";
 import TextField from '@material-ui/core/TextField';
 
 
