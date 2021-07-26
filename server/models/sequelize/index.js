@@ -8,7 +8,6 @@ const Operation = require("./Operation");
 
 const connection = require("../../lib/sequelize");
 
-
 connection.sync().then((_) => console.log("Database synced"));
 
 module.exports = {

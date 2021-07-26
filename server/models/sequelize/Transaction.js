@@ -16,7 +16,7 @@ Transaction.init(
     },
     {
         sequelize: connection,
-        modelName: "Transaction",
+        modelName: "transaction",
         paranoid: true,
     }
 );
