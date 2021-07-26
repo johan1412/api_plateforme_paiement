@@ -38,6 +38,4 @@ app.use('/admin', adminRouter);
 app.use('/currency', currencyRouter);
 app.use('/marchant', marchantRouter);
 
-sequelize.sync({ alter: true })
-
 app.listen(3000, () => console.log("server is listening"));

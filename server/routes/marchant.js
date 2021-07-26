@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Transaction = require('../models/sequelize/Transaction');
+const Transaction = require('../models/sequelize');
 const verify = require('../lib/security');
 
 /**
@@ -25,7 +25,7 @@ const verify = require('../lib/security');
  */
 
 // Créer une transaction
-router.get('/transaction', verify,async (req, res) => {
+router.get('/transaction', verify, async (req, res) => {
     const transactions = await Transaction.findAll();
     res.send(transactions);
 });

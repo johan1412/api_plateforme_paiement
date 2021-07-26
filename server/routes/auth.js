@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/sequelize/User');
+const User = require('../models/sequelize');
 const { registerValidation, loginValidation } = require('../validation/validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -80,13 +80,13 @@ router.post('/login', async (req, res) => {
 })
 
 
-router.get('/:id', async(req, res) => {
+router.get('/:id', async (req, res) => {
     const id = req.params.id;
     const user = await User.findByPk(id);
     res.send(user);
 });
 
-router.patch('/:id', async(req, res) => {
+router.patch('/:id', async (req, res) => {
     const id = req.params.id;
     const data = req.body.data;
     let user = await User.findByPk(id);

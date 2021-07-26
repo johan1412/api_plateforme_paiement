@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const Transaction = require('../models/sequelize/Transaction');
+const Transaction = require('../models/sequelize');
 const TransactionMongo = require('../models/mongo/Transaction');
-const User = require('../models/sequelize/User');
+const User = require('../models/sequelize');
 const verify = require('../lib/security');
 
 
@@ -44,7 +44,7 @@ router.put('/activate/:id', verify, async (req, res) => {
 });
 
 // Modifier un user
-router.put('/update/:id', verify,async function (req, res, next) {
+router.put('/update/:id', verify, async function (req, res, next) {
     // Log.i("update the user with id " + req.params.id);
     User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
         if (err) return next(err);
@@ -55,7 +55,7 @@ router.put('/update/:id', verify,async function (req, res, next) {
 });
 
 // Supprimer un user
-router.delete('/delete/:id',verify ,async function (req, res, next) {
+router.delete('/delete/:id', verify, async function (req, res, next) {
     // Log.i("delete the user with id " + req.params.id);
     User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
         if (err) return next(err);
@@ -70,12 +70,12 @@ router.delete('/delete/:id',verify ,async function (req, res, next) {
  * PARTIE TRANSACTION
  */
 
-router.get('/transactions', verify,async(req, res) => {
+router.get('/transactions', verify, async (req, res) => {
     const transactions = await Transaction.findAll();
     res.send(transactions);
 });
 
-router.get('/transactions/:id', verify,async (req, res) => {
+router.get('/transactions/:id', verify, async (req, res) => {
     const transactions = await Transaction.findOne({ where });
     res.send(transactions);
 });
