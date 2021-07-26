@@ -28,8 +28,9 @@ const Login = () => {
           id: response.data._id,
           username: response.data.username,
           password: response.data.password,
-          });
+        });
         setSubmitted(true);
+        localStorage.setItem('user', response.data._id);
         console.log(response.data);
       })
       .catch(e => {
