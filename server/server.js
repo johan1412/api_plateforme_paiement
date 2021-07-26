@@ -36,6 +36,7 @@ app.use(cors());
 app.use('/users', authRouter);
 app.use('/admin', adminRouter);
 app.use('/currency', currencyRouter);
+
 app.use('/marchant', marchantRouter);
 
 app.listen(3000, () => console.log("server is listening"));

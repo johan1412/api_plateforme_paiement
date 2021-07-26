@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-function MarchantItem({ marchantItem }) {
+function MerchantItem({ marchantItem }) {
 
-    const [marchant, setMarchant] = useState(marchantItem)
+    const [marchant, setMerchant] = useState(marchantItem)
 
 
     const handleChange = async (marchant) => {
@@ -17,12 +17,12 @@ function MarchantItem({ marchantItem }) {
             },
         })
         const data = await res.json()
-        setMarchant(data)
+        setMerchant(data)
 
     }
 
     return <div>
-        <h1>Marchants :</h1>
+        <h1>Merchants :</h1>
         <li> {marchant.username}
             <input type="checkbox" onChange={(event) => {
                 handleChange(marchant)
@@ -31,4 +31,4 @@ function MarchantItem({ marchantItem }) {
     </div>
 }
 
-export default MarchantItem;
+export default MerchantItem;

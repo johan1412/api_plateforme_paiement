@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Transaction = require('../models/sequelize');
+const { Transaction } = require('../models/sequelize');
 const verify = require('../lib/security');
 
 /**

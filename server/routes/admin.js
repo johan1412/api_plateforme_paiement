@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const Transaction = require('../models/sequelize');
+const { Transaction, User } = require('../models/sequelize');
 const TransactionMongo = require('../models/mongo/Transaction');
-const User = require('../models/sequelize');
 const verify = require('../lib/security');
 
 
@@ -10,10 +9,6 @@ const verify = require('../lib/security');
  */
 
 // Afficher tous les user 
-router.get('/all', verify, async (req, res) => {
-    const users = await User.findAll();
-    res.send(users);
-});
 
 // Activater un compte user
 router.put('/activate/:id', verify, async (req, res) => {

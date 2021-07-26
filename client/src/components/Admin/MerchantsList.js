@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import MarchantItem from "./MarchantItem";
+import MerchantItem from "./MerchantItem";
 
-function MarchantsList() {
-    const [marchants, setMarchants] = useState([])
+function MerchantsList() {
+    const [marchants, setMerchants] = useState([])
 
-    const getMarchants = async () => {
+    const getMerchants = async () => {
         const res = await fetch('http://localhost:3001/users/all')
         const data = await res.json()
-        setMarchants(data)
+        setMerchants(data)
         console.log(data)
     }
 
     useEffect(() => {
-        getMarchants()
+        getMerchants()
     }, [])
 
 
@@ -24,11 +24,11 @@ function MarchantsList() {
         <ul>
 
             {marchants.map((marchant) => {
-                return <MarchantItem key={marchant.username} marchantItem={marchant} />
+                return <MerchantItem key={marchant.username} marchantItem={marchant} />
             })}
 
         </ul>
     );
 }
 
-export default MarchantsList;
+export default MerchantsList;

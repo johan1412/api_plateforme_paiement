@@ -1,19 +1,26 @@
 const router = require('express').Router();
-const User = require('../models/sequelize');
+const { User } = require('../models/sequelize');
 const { registerValidation, loginValidation } = require('../validation/validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/middlewares');
 
+const validation = require("../validation/validation");
 
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey("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")
+
+
+router.get('/', async (req, res) => {
+    const users = await User.findAll();
+    res.send(users);
+});
 
 router.post('/register', async (req, res) => {
 
     // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
     const { error } = registerValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].messsage);
+    if (error) return res.status(400).send(error.details.map((item) => item.message));
 
     // CHECK PASSWORD IF EXIST
     const emailExist = await User.findOne({ where: { username: req.body.username } });

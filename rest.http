@@ -1,6 +1,6 @@
 
 ### All User OK
-GET http://localhost:3001/users/all
+GET http://localhost:3001/users
 Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjcyMjk3MTB9.SIVypiNWviSlcttsGRkevzuJDMo-OZveLf-AQaCYAWA
 
 
