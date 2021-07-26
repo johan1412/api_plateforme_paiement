@@ -3,7 +3,6 @@ const User = require('../models/sequelize/User');
 const { registerValidation, loginValidation } = require('../validation/validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const verify = require('../lib/security');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/middlewares');
 
 

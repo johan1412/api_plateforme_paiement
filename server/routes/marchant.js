@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const Transaction = require('../models/sequelize/Transaction');
-const TransactionMongo = require('../models/mongo/Transaction');
-const User = require('../models/sequelize/User');
+const verify = require('../lib/security');
 
 /**
  * Le marchand doit pouvoir :
@@ -26,10 +25,9 @@ const User = require('../models/sequelize/User');
  */
 
 // Créer une transaction
-router.get('/transaction', (req, res) => {
-    Transaction.findAll()
-        .then((data) => { res.send(data); })
-        .catch((e) => res.sendStatus(500));
+router.get('/transaction', verify,async (req, res) => {
+    const transactions = await Transaction.findAll();
+    res.send(transactions);
 });
 
 // Afficher les transactions du user

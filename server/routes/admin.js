@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Transaction = require('../models/sequelize/Transaction');
 const TransactionMongo = require('../models/mongo/Transaction');
 const User = require('../models/sequelize/User');
-const { where } = require('sequelize/types');
+const verify = require('../lib/security');
 
 
 /**
@@ -44,7 +44,7 @@ router.put('/activate/:id', verify, async (req, res) => {
 });
 
 // Modifier un user
-router.put('/update/:id', function (req, res, next) {
+router.put('/update/:id', verify,async function (req, res, next) {
     // Log.i("update the user with id " + req.params.id);
     User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
         if (err) return next(err);
@@ -55,7 +55,7 @@ router.put('/update/:id', function (req, res, next) {
 });
 
 // Supprimer un user
-router.delete('/delete/:id', function (req, res, next) {
+router.delete('/delete/:id',verify ,async function (req, res, next) {
     // Log.i("delete the user with id " + req.params.id);
     User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
         if (err) return next(err);
@@ -70,23 +70,17 @@ router.delete('/delete/:id', function (req, res, next) {
  * PARTIE TRANSACTION
  */
 
-router.get('/transactions', (req, res) => {
+router.get('/transactions', verify,async(req, res) => {
     const transactions = await Transaction.findAll();
     res.send(transactions);
-    // Transaction.findAll()
-    //     .then((data) => {
-    //         res.send(data);
-    //     })
-    //     .catch((e) => res.sendStatus(500));
 });
 
-router.get('/transactions/:id', (req, res) => {
+router.get('/transactions/:id', verify,async (req, res) => {
     const transactions = await Transaction.findOne({ where });
     res.send(transactions);
 });
 
-router.post('/transactions/some', (req, res) => {
-    console.log("tester");
+router.post('/transactions/some', verify, (req, res) => {
     const dataReq = req.body;
     TransactionMongo.find({
         $elemMatch: {
