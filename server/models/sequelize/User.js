@@ -22,11 +22,6 @@ User.init(
       unique: true,
       allowNull: false,
     },
-    confirmed: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
     phone: DataTypes.STRING,
     contact: {
       type: DataTypes.STRING,
@@ -49,7 +44,6 @@ User.init(
   {
     sequelize: connection,
     modelName: "user",
-    paranoid: true,
   }
 );
 
