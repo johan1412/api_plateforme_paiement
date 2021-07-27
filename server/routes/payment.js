@@ -10,10 +10,9 @@ router
             items: [{ title: "spoon", quantity: "1" }],
         });
     })
-    .post("/", (req, res) => {
-        fetch('http://psp/psp', { method: 'POST'})
-            .then(res => res.json()) // expecting a json response
-            .then(json => console.log(json));
+    .post("/", async (req, res) => {
+        const response = await fetch('http://localhost:3003/psp', { method: 'POST'});
+        console.log(response);
     });
 
 module.exports = router;

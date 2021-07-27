@@ -10,7 +10,7 @@ const verify = require('../lib/security');
  */
 
 // Afficher tous les user 
-router.get('/all', verify, async (req, res) => {
+router.get('/all', async (req, res) => {
     const users = await User.findAll();
     res.send(users);
 });
