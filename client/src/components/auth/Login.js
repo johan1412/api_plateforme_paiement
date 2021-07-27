@@ -30,7 +30,7 @@ const Login = () => {
           password: response.data.password,
         });
         setSubmitted(true);
-        localStorage.setItem('user', response.data._id);
+        localStorage.setItem('user', response.data);
         console.log(response.data);
       })
       .catch(e => {
