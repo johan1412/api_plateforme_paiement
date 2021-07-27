@@ -5,13 +5,10 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
-import Collapse from '@material-ui/core/Collapse';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -27,24 +24,20 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
-import { DataGrid } from '@material-ui/data-grid';
-
 
 // icons
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import SendIcon from '@material-ui/icons/Send';
 import HomeIcon from '@material-ui/icons/Home';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
 
+import { fetchUtils, Admin, Resource } from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+import simpleRestProvider from 'ra-data-simple-rest';
 
-// import DraftsIcon from '@material-ui/icons/Drafts';
-// import ExpandLess from '@material-ui/icons/ExpandLess';
-// import ExpandMore from '@material-ui/icons/ExpandMore';
-// import StarBorder from '@material-ui/icons/StarBorder';
+import { UserList, PostShow } from './users';
 
 
 const drawerWidth = 240;
@@ -346,15 +339,26 @@ export default function MiniDrawer() {
             <main className={classes.content}>
                 <div className={classes.toolbar} />
                 <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid
-                        rows={rows}
-                        columns={columns}
-                        pageSize={5}
-                        checkboxSelection
-                        disableSelectionOnClick
-                    />
+                    {/* <Admin dataProvider={jsonServerProvider('https://jsonplaceholder.typicode.com')}>
+                        <Resource name="posts" list={User} />
+                    </Admin> */}
+                    <Admin dataProvider={dataProvider}>
+                        <Resource name="users" list={UserList} show={PostShow} />
+                    </Admin>
                 </div>
             </main>
         </div>
     );
 }
+
+const dataProvider = jsonServerProvider('http://localhost:3001/users');
+
+// const fetchJson = (url, options = {}) => {
+//     if (!options.headers) {
+//         options.headers = new Headers({ Accept: 'application/json' });
+//     }
+//     // add your own headers here
+//     options.headers.set('X-Custom-Header', 'foobar');
+//     return fetchUtils.fetchJson(url, options);
+// }
+// const dataProvider = simpleRestProvider('http://localhost:3001/users', fetchJson);

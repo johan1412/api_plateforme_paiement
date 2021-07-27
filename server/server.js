@@ -1,5 +1,5 @@
 
-const sequelize = require("./lib/sequelize");
+// const sequelize = require("./lib/sequelize");
 const express = require("express");
 const cors = require("cors");
 const Currency = require("./models/mongo/Currency");

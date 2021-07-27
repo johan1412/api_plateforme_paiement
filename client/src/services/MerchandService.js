@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "../http-common/http-common";
 
 const getAll = () => {
   return http.get("/merchand/transaction");
@@ -21,14 +21,12 @@ const remove = id => {
 };
 
 const getUserInfos = id => {
-    return http.get("/users/${id}");
+  return http.get("/users/${id}");
 }
 
 const deleteCredentials = (id, data) => {
-    return http.patch("/users/${id}", data);
+  return http.patch("/users/${id}", data);
 }
-
-
 
 export default {
   getAll,
