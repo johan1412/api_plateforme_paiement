@@ -15,7 +15,8 @@ function MerchantsList() {
         getMerchants()
     }, [])
 
-   return (
+   return (<>
+        <h1>Merchants :</h1>
         <ul>
 
             {marchants.map((marchant) => {
@@ -23,6 +24,7 @@ function MerchantsList() {
             })}
 
         </ul>
+        </>
     );
 }
 

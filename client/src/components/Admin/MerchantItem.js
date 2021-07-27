@@ -22,7 +22,6 @@ function MerchantItem({ marchantItem }) {
     }
 
     return <div>
-        <h1>Merchants :</h1>
         <li> {marchant.username}
             <input type="checkbox" onChange={(event) => {
                 handleChange(marchant)
