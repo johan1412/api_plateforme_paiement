@@ -1,31 +1,14 @@
 import { useEffect, useState, useRef } from "react";
-import AdminDataService from "../../services/AdminService";
+import TransactionDataService from "../../services/TransactionService";
 import MerchandDataService from "../../services/MerchandService";
-import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-
-
-const useStyles = makeStyles((theme) => ({
-    button: {
-      margin: theme.spacing(1),
-    },
-}));
 
 
 function TransactionsList() {
     const [transactions, setTransactions] = useState([]);
-    const [currentTransaction, setCurrentTransaction] = useState(null);
-    const [currentIndex, setCurrentIndex] = useState(-1);
     const inputSearch = useRef(null);
 
     const getTransactions = async () => {
-        ////////////////////////////
-        // IF (role == ADMIN)
-            AdminDataService.getAll()
-        // ELSE
-            // MerchandDataService.getAll()
-        ////////////////////////////
+        TransactionDataService.getAll()
         .then(response => {
             setTransactions(Object.values(response.data));
             console.log(response.data);
@@ -48,13 +31,6 @@ function TransactionsList() {
         });
         setTransactions(res);
     }
-
-    const setActiveTransaction = (Transaction, index) => {
-        setCurrentTransaction(Transaction);
-        setCurrentIndex(index);
-    };
-    
-    const classes = useStyles();
 
 
     const transactionsList = transactions.map((transaction) => {

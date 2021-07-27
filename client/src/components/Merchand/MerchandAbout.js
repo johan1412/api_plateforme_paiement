@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import MerchandDataService from "../../services/MerchandService";
-import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -14,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 function MerchandAbout() {
     const [informations, setInformations] = useState([]);
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
 
     const classes = useStyles();
 
@@ -38,12 +37,17 @@ function MerchandAbout() {
     }, []);
     
     const deleteCredentials = () => {
-        const data = {
-            key_p: informations.key_p,
-            key_s: informations.key_s,
-        };
-    
-        MerchandDataService.deleteCredentials(user, '')
+        MerchandDataService.deleteCredentials(user)
+        .then(response => {
+            setInformations(response.informations);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    };
+
+    const updateCredentials = () => {
+        MerchandDataService.updateCredentials(user)
         .then(response => {
             setInformations(response.informations);
         })
@@ -88,19 +92,19 @@ function MerchandAbout() {
                         <h2 className="text-center">Credentials</h2>
                         <div className="col-6 mt-5">
                             <ul className="left-list">
-                                <li>public key: </li>
+                                <li>token key: </li>
                                 <li>secret key: </li>
                             </ul>
                         </div>
                         <div className="col-6">
                             { user && 
                                 <ul className="right-list">
-                                    <li>{ informations.key_p }</li>
-                                    <li>{ informations.key_s }</li>
+                                    <li>{ informations.clientToken }</li>
+                                    <li>{ informations.clientSecret }</li>
                                 </ul>
                             }
                         </div>
-                        <div class="d-flex justify-content-center mt-5">
+                        <div className="d-flex justify-content-center mt-5">
                             <Button
                                 variant="contained"
                                 color="secondary"
@@ -113,6 +117,7 @@ function MerchandAbout() {
                                 color="primary"
                                 className={classes.button}
                                 startIcon={<RefreshIcon />}
+                                onClick={updateCredentials}
                             >Regenerate</Button>
                         </div>
                     </div>

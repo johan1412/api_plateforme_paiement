@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../models/sequelize');
+const UserMongo = require('../models/mongo/User');
 const verify = require('../lib/security');
 
 
@@ -55,10 +56,15 @@ router
     .patch('/:id', async (req, res) => {
         const id = req.params.id;
         const data = req.body.data;
-        let user = await User.findByPk(id);
-        user.key_p = data;
-        user.key_s = data;
+        let user = await User.findOne({ where: { username: id } })
+        let userMongo = await UserMongo.find(id);
+        user.clientToken = data;
+        user.clientSecret = data;
         const savedUser = await user.save();
+        await User.updateOne(
+            { userId: id },
+            {$set: { 'clientToken': '', clientSecret: '' }}
+        );
         res.send(savedUser);
     })
     .patch('/activate/:id', verify, async (req, res) => {

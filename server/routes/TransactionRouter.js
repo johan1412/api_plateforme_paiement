@@ -6,6 +6,33 @@ const verify = require('../lib/security');
 
 router
     .get("/", (req, res) => {
+<<<<<<< HEAD
+        const query = req.query;
+        const loggedInUser = localStorage.getItem("user");
+        if (!loggedInUser) {
+            res.json(null);
+        } else {
+            if (loggedInUser.role == "admin") {
+                Transaction.find(query)
+                .then((data) => res.json(data))
+                .catch((e) => res.sendStatus(500));
+            } else if(loggedInUser.role == "merchant") {
+                Transaction.find(query)
+                .then((data) => res.json(data))
+                .catch((e) => res.sendStatus(500));
+            }
+        }
+    })
+    .post("/", (req, res) => {
+        new Transaction(req.body)
+        .save()
+        .then((data) => res.status(201).json(data))
+        .catch((e) => {
+            if (e.name === "SequelizeValidationError") {
+                res.status(400).json(prettifyErrors(e));
+            } else console.error(e) || res.sendStatus(500);
+        });
+=======
         const { page = 1, perPage = 10, ...query } = req.query;
         TransactionMongo.find()
             .then((data) => res.json(data))
@@ -55,6 +82,7 @@ router
                 if (err) return console.error(err);
                 console.log("Document inserted succussfully!");
               });
+>>>>>>> 060df6971c788025b09600166d44da77117d0872
     })
     .get("/:id", (req, res) => {
         const { id } = req.params;
