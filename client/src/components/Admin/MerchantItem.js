@@ -6,8 +6,8 @@ function MerchantItem({ marchantItem }) {
 
 
     const handleChange = async (marchant) => {
-        const res = await fetch('http://localhost:3001/users/activate/' + marchant.username, {
-            method: "PUT",
+        const res = await fetch('http://localhost:3001/users/activate/' + marchant.id, {
+            method: "PATCH",
             body: JSON.stringify({
                 activate: !marchant.isVerified
             }),
@@ -22,7 +22,6 @@ function MerchantItem({ marchantItem }) {
     }
 
     return <div>
-        <h1>Merchants :</h1>
         <li> {marchant.username}
             <input type="checkbox" onChange={(event) => {
                 handleChange(marchant)

@@ -10,7 +10,7 @@ const deleteCredentials = (id) => {
 }
 
 const updateCredentials = id => {
-    
+
 }
 
 export default {
