@@ -70,7 +70,7 @@ services:
       - 3003:3000
     environment:
       PORT: 3000
-      API_URL: http://localhost:3000
+      API_URL: http://server:3000
     volumes:
       - ./psp:/home/node/app
     working_dir: /home/node/app

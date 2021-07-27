@@ -11,8 +11,8 @@ router
         });
     })
     .post("/", async (req, res) => {
-        const response = await fetch('http://localhost:3003/psp', { method: 'POST'});
-        console.log(response);
+        const response = await fetch('http://psp:3000/psp', { method: 'POST'});
+        res.send("accepted macha")
     });
 
 module.exports = router;
