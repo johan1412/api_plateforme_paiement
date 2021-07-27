@@ -16,17 +16,11 @@ function MerchantsList() {
     }, [])
 
 
-
-
-
-
     return (
         <ul>
-
             {marchants.map((marchant) => {
                 return <MerchantItem key={marchant.username} marchantItem={marchant} />
             })}
-
         </ul>
     );
 }

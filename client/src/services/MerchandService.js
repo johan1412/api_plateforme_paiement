@@ -9,7 +9,9 @@ const deleteCredentials = (id) => {
     return http.patch("/users/${id}", data);
 }
 
-
+const updateCredentials = id => {
+    
+}
 
 export default {
   getUserInfos,

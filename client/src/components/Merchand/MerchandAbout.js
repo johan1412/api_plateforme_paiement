@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import MerchandDataService from "../../services/MerchandService";
-import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -38,11 +37,6 @@ function MerchandAbout() {
     }, []);
     
     const deleteCredentials = () => {
-        /*const data = {
-            client_token: informations.clientToken,
-            client_secret: informations.clientSecret,
-        };*/
-
         MerchandDataService.deleteCredentials(user)
         .then(response => {
             setInformations(response.informations);
@@ -53,7 +47,13 @@ function MerchandAbout() {
     };
 
     const updateCredentials = () => {
-        console.log("update credentials");
+        MerchandDataService.updateCredentials(user)
+        .then(response => {
+            setInformations(response.informations);
+        })
+        .catch(e => {
+            console.log(e);
+        });
     };
 
     return (
@@ -92,15 +92,15 @@ function MerchandAbout() {
                         <h2 className="text-center">Credentials</h2>
                         <div className="col-6 mt-5">
                             <ul className="left-list">
-                                <li>public key: </li>
+                                <li>token key: </li>
                                 <li>secret key: </li>
                             </ul>
                         </div>
                         <div className="col-6">
                             { user && 
                                 <ul className="right-list">
-                                    <li>{ informations.client_token }</li>
-                                    <li>{ informations.client_secret }</li>
+                                    <li>{ informations.clientToken }</li>
+                                    <li>{ informations.clientSecret }</li>
                                 </ul>
                             }
                         </div>

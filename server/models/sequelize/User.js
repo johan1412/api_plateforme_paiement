@@ -44,7 +44,9 @@ User.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    roles: DataTypes.ENUM("MARCHAND", "ADMIN")
+    roles: DataTypes.ENUM("MARCHAND", "ADMIN"),
+    clientToken: DataTypes.STRING,
+    clientSecret: DataTypes.STRING,
   },
   {
     sequelize: connection,
@@ -57,6 +59,20 @@ User.hasMany(Transaction);
 
 const cryptPassword = /* 1BBCFG34237 */ async (user) => {
   user.password = await bcryptjs.hash(user.password, await bcryptjs.genSalt());
+
+  if (user.clientToken === '') {
+    let text1 = "";
+    let text2 = "";
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < 20; i++) {
+        text1 += possible.charAt(Math.floor(Math.random() * possible.length));
+        text2 += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    user.clientToken = text1;
+    user.clientSecret = text2;
+  }
 };
 
 User.addHook("beforeCreate", /* 1BBCFG34237 */ cryptPassword);

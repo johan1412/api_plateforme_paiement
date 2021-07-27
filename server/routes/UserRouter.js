@@ -56,18 +56,16 @@ router
     .patch('/:id', async (req, res) => {
         const id = req.params.id;
         const data = req.body.data;
-        let user = await UserMongo.find(id);
+        let user = await User.findOne({ where: { username: id } })
+        let userMongo = await UserMongo.find(id);
         user.clientToken = data;
         user.clientSecret = data;
         const savedUser = await user.save();
-        res.send(savedUser);
-
-        /*await User.updateOne(
+        await User.updateOne(
             { userId: id },
-            {
-              $set: { 'clientToken': '', clientSecret: '' },
-            }
-        );*/
+            {$set: { 'clientToken': '', clientSecret: '' }}
+        );
+        res.send(savedUser);
     })
     .patch('/activate/:id', verify, async (req, res) => {
         const id = req.params.id
