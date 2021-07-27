@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Transaction, Cart, Product, User } = require('../models/sequelize');
+const { Transaction, Cart, Product, User, Operation } = require('../models/sequelize');
 const TransactionMongo = require('../models/mongo/Transaction');
 const verify = require('../lib/security');
 
@@ -58,7 +58,10 @@ router
     })
     .get("/:id", (req, res) => {
         const { id } = req.params;
-        Transaction.findByPk(id)
+        Transaction.findOne({
+            where: { id: id},
+            include : Operation
+        })
             .then((data) => (data !== null ? res.json(data) : res.sendStatus(404)))
             .catch((e) => res.sendStatus(500));
     })
@@ -84,30 +87,5 @@ router
             .catch((e) => res.sendStatus(500));
     });
 
-
-router.post('/some', verify, (req, res) => {
-    const dataReq = req.body;
-    TransactionMongo.find({
-        $elemMatch: {
-            "consumer.lastname": dataReq,
-            "consumer.firstname": dataReq,
-            "consumer.email": dataReq,
-            "billingAdress.adress": dataReq,
-            "billingAdress.zipCode": dataReq,
-            "billingAdress.city": dataReq,
-            "billingAdress.country": dataReq,
-            "shippingAdress.adress": dataReq,
-            "shippingAdress.zipCode": dataReq,
-            "shippingAdress.city": dataReq,
-            "shippingAdress.country": dataReq,
-            "cart": dataReq,
-            "totalPrice": dataReq,
-        }
-    })
-        .then((data) => {
-            res.send(data);
-        })
-        .catch((e) => res.sendStatus(500));
-});
 
 module.exports = router;

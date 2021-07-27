@@ -14,6 +14,8 @@ const authRouter = require("./routes/AuthRouter");
 const currencyRouter = require("./routes/CurrencyRouter");
 const transactionRouter = require("./routes/TransactionRouter");
 const userRouter = require("./routes/UserRouter");
+const operationRouter = require("./routes/OperationRouter");
+
 
 const dotenv = require('dotenv');
 
@@ -40,5 +42,7 @@ app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use('/currency', currencyRouter);
 app.use('/transactions', transactionRouter);
+app.use('/operations', operationRouter);
+
 
 app.listen(3000, () => console.log("server is listening"));

@@ -7,7 +7,7 @@ class Operation extends Model {}
 Operation.init(
     //Schema
     {
-       type: DataTypes.ENUM('type1','type2')
+       type: DataTypes.STRING
     },
     {
         sequelize: connection,
