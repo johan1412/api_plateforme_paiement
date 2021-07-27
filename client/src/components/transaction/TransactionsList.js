@@ -27,7 +27,7 @@ function TransactionsList() {
             // MerchandDataService.getAll()
         ////////////////////////////
         .then(response => {
-            setTransactions(response.data);
+            setTransactions(Object.values(response.data));
             console.log(response.data);
         })
         .catch(e => {
@@ -42,7 +42,7 @@ function TransactionsList() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = inputSearch.current.value;
-        const res = await fetch('http://localhost:3001/admin/transactions/some', {
+        const res = await fetch('http://localhost:3001/transactions', {
             method: "POST",
             body: JSON.stringify(data),
         });
@@ -58,11 +58,11 @@ function TransactionsList() {
 
 
     const transactionsList = transactions.map((transaction) => {
-        return <tr key={transaction.consumer.email}>
+        return <tr key={transaction.user.username}>
             <td>
                 <ul>
-                    <li>{transaction.consumer.lastname} {transaction.consumer.firstname}</li>
-                    <li>{transaction.consumer.email}</li>
+                    <li>{transaction.user.username} {transaction.user.username}</li>
+                    <li>{transaction.user.username}</li>
                 </ul>
             </td>
             <td> {transaction.facturation} </td>
@@ -92,16 +92,15 @@ function TransactionsList() {
                     { transactionsList }
                 </tbody>
             </table>
-        </>
 
-        /*
+        
          <div className="list row">
             <div className="col-md-6">
                 <h4>Transactions List</h4>
 
                 <ul className="list-group">
-                {Transactions &&
-                    Transactions.map((Transaction, index) => (
+                {transactionsList &&
+                    transactionsList.map((Transaction, index) => (
                     <li
                         className={
                         "list-group-item " + (index === currentIndex ? "active" : "")
@@ -122,13 +121,13 @@ function TransactionsList() {
                     <label>
                         <strong>First Name:</strong>
                     </label>{" "}
-                    {currentTransaction.customer.firstName}
+                    {currentTransaction.user.username}
                     </div>
                     <div>
                     <label>
                         <strong>Last Name:</strong>
                     </label>{" "}
-                    {currentTransaction.customer.lastName}
+                    {currentTransaction.user.username}
                     </div>
                     <div>
                     <label>
@@ -179,7 +178,8 @@ function TransactionsList() {
                 )}
             </div>
         </div>
-         */
+        </>
+
     );
 }
 

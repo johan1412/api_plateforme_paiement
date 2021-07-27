@@ -18,7 +18,8 @@ Cart.init(
   }
 );
 
-Cart.hasMany(Product);
-Product.belongsTo(Cart); 
+Cart.Products = Cart.hasMany(Product);
+Product.Cart = Product.belongsTo(Cart); 
+
 
 module.exports = Cart;

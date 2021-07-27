@@ -22,10 +22,14 @@ Transaction.init(
 );
 
 
-Transaction.belongsTo(ShippingAddress);
-Transaction.belongsTo(BillingAddress);
-Transaction.belongsTo(Cart);
+Transaction.ShippingAddress = Transaction.belongsTo(ShippingAddress);
+ShippingAddress.Transaction = ShippingAddress.hasOne(Transaction);
 
+Transaction.BillingAddress = Transaction.belongsTo(BillingAddress);
+BillingAddress.Transaction = BillingAddress.hasOne(Transaction);
+
+Transaction.Cart = Transaction.belongsTo(Cart);
+Cart.Transaction = Cart.hasOne(Transaction);
 
 module.exports = Transaction;
 

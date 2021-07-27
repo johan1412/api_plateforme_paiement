@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Transaction } = require('../models/sequelize');
+const { Transaction, Cart, Product, User } = require('../models/sequelize');
 const TransactionMongo = require('../models/mongo/Transaction');
 const verify = require('../lib/security');
 
@@ -7,24 +7,54 @@ const verify = require('../lib/security');
 router
     .get("/", (req, res) => {
         const { page = 1, perPage = 10, ...query } = req.query;
-        Transaction.findAll({
-            where: query,
-            limit: parseInt(perPage),
-            offset: (parseInt(page) - 1) * parseInt(perPage),
-            paranoid: false,
-        })
+        TransactionMongo.find()
             .then((data) => res.json(data))
             .catch((e) => res.sendStatus(500));
     })
-    .post("/", (req, res) => {
-        new Transaction(req.body)
+    .post("/", async (req, res) => {
+        // TODO : Add transaction
+        new Transaction(req.body,
+            {
+                include: [
+                    {
+                        association: Transaction.ShippingAddress,
+                    },
+                    {
+                        association: Transaction.User,
+                    },
+                    {
+                        association: Transaction.BillingAddress
+                    },
+                    {
+                        association: Transaction.Cart,
+                        include: [Cart.Products]
+                    },
+
+                ]
+            }
+
+        )
             .save()
             .then((data) => res.status(201).json(data))
             .catch((e) => {
+                console.log(e)
                 if (e.name === "SequelizeValidationError") {
                     res.status(400).json(prettifyErrors(e));
                 } else console.error(e) || res.sendStatus(500);
             });
+           
+            let tmp = req.body
+            const user = await User.findByPk(req.body.userId) 
+            console.log(user)
+            delete tmp.userId
+
+            tmp.user = { username: user.username } 
+            let transMango = new TransactionMongo(tmp)
+            
+            transMango.save(function(err, doc) {
+                if (err) return console.error(err);
+                console.log("Document inserted succussfully!");
+              });
     })
     .get("/:id", (req, res) => {
         const { id } = req.params;

@@ -5,7 +5,7 @@ function MerchantsList() {
     const [marchants, setMerchants] = useState([])
 
     const getMerchants = async () => {
-        const res = await fetch('http://localhost:3001/users/all')
+        const res = await fetch('http://localhost:3001/users')
         const data = await res.json()
         setMerchants(data)
         console.log(data)
@@ -15,12 +15,7 @@ function MerchantsList() {
         getMerchants()
     }, [])
 
-
-
-
-
-
-    return (
+   return (
         <ul>
 
             {marchants.map((marchant) => {

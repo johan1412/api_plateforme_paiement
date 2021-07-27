@@ -6,8 +6,8 @@ function MerchantItem({ marchantItem }) {
 
 
     const handleChange = async (marchant) => {
-        const res = await fetch('http://localhost:3001/users/activate/' + marchant.username, {
-            method: "PUT",
+        const res = await fetch('http://localhost:3001/users/activate/' + marchant.id, {
+            method: "PATCH",
             body: JSON.stringify({
                 activate: !marchant.isVerified
             }),

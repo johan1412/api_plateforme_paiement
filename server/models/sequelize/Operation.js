@@ -1,13 +1,13 @@
-
 const connection = require("../../lib/sequelize");
 const { Model, DataTypes } = require("sequelize");
+const Transaction = require("./Transaction");
 
-class Operation extends Model { }
+class Operation extends Model {}
 
 Operation.init(
     //Schema
     {
-        name: DataTypes.STRING,
+       type: DataTypes.ENUM('type1','type2')
     },
     {
         sequelize: connection,
@@ -16,5 +16,8 @@ Operation.init(
     }
 );
 
+
+Transaction.Operations = Transaction.hasMany(Operation);
+Operation.Transaction = Operation.belongsTo(Transaction);
 
 module.exports = Operation;

@@ -3,6 +3,7 @@ const sequelize = require("./lib/sequelize");
 const express = require("express");
 const cors = require("cors");
 const Currency = require("./models/mongo/Currency");
+const TransactionMongo = require("./models/mongo/Transaction");
 
 const { MongooseGenerator, Scrapper } = require("./scrapper");
 
