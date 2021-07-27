@@ -10,7 +10,6 @@ router
             where: query,
             limit: parseInt(perPage),
             offset: (parseInt(page) - 1) * parseInt(perPage),
-            paranoid: false,
         })
             .then((data) => res.json(data))
             .catch((e) => res.sendStatus(500));
@@ -64,7 +63,7 @@ router
     .patch('/activate/:id', async (req, res) => {
         const id = req.params.id
         let user = await User.findOne({ where: { username: id } })
-        console.log("--------------", user)
+        console.log("--------------", id)
         let msgText
         user.isVerified = req.body.activate
         if (req.body.activate) {

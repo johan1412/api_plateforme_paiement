@@ -6,8 +6,12 @@ const verify = require('../lib/security');
 
 router
     .get("/", (req, res) => {
-        const { page = 1, perPage = 10, ...query } = req.query;
-        TransactionMongo.find()
+        const { page = 1, perPage = 20, ...query } = req.query;
+        Transaction.findAll({
+            where: query,
+            limit: parseInt(perPage),
+            offset: (parseInt(page) - 1) * parseInt(perPage),
+        })
             .then((data) => res.json(data))
             .catch((e) => res.sendStatus(500));
     })
