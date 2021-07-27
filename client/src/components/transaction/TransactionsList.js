@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import AdminDataService from "../../services/AdminService";
+import TransactionDataService from "../../services/TransactionService";
 import MerchandDataService from "../../services/MerchandService";
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
@@ -20,12 +20,7 @@ function TransactionsList() {
     const inputSearch = useRef(null);
 
     const getTransactions = async () => {
-        ////////////////////////////
-        // IF (role == ADMIN)
-            AdminDataService.getAll()
-        // ELSE
-            // MerchandDataService.getAll()
-        ////////////////////////////
+        TransactionDataService.getAll()
         .then(response => {
             setTransactions(response.data);
             console.log(response.data);

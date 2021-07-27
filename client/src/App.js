@@ -9,6 +9,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import MerchantsList from "./components/Admin/MerchantsList";
 import MerchandAbout from "./components/Merchand/MerchandAbout";
+import CredentialProvider from "./contexts/CredentialContext";
 
 
 function App() {
@@ -54,15 +55,17 @@ function App() {
         </div>
       </nav>
       <div className="container mt-3">
-        <Switch>
-          <Route exact path="/Transactions" component={TransactionsList} />
-          <Route exact path={["/", "/Transaction"]} component={AddTransaction} />
-          <Route path="/Transaction/:id" component={AddTransaction} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Register" component={Register} />
-          <Route path="/marchants" component={MerchantsList} />
-          <Route path="/marchants-about" component={MerchandAbout} />
-        </Switch>
+        <CredentialProvider>
+            <Switch>
+            <Route exact path="/Transactions" component={TransactionsList} />
+            <Route exact path={["/", "/Transaction"]} component={AddTransaction} />
+            <Route path="/Transaction/:id" component={AddTransaction} />
+            <Route path="/Login" component={Login} />
+            <Route path="/Register" component={Register} />
+            <Route path="/marchants" component={MerchantsList} />
+            <Route path="/marchants-about" component={MerchandAbout} />
+            </Switch>
+        </CredentialProvider>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 function MerchandAbout() {
     const [informations, setInformations] = useState([]);
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
 
     const classes = useStyles();
 
@@ -38,18 +38,22 @@ function MerchandAbout() {
     }, []);
     
     const deleteCredentials = () => {
-        const data = {
-            key_p: informations.key_p,
-            key_s: informations.key_s,
-        };
-    
-        MerchandDataService.deleteCredentials(user, '')
+        /*const data = {
+            client_token: informations.clientToken,
+            client_secret: informations.clientSecret,
+        };*/
+
+        MerchandDataService.deleteCredentials(user)
         .then(response => {
             setInformations(response.informations);
         })
         .catch(e => {
             console.log(e);
         });
+    };
+
+    const updateCredentials = () => {
+        console.log("update credentials");
     };
 
     return (
@@ -95,12 +99,12 @@ function MerchandAbout() {
                         <div className="col-6">
                             { user && 
                                 <ul className="right-list">
-                                    <li>{ informations.key_p }</li>
-                                    <li>{ informations.key_s }</li>
+                                    <li>{ informations.client_token }</li>
+                                    <li>{ informations.client_secret }</li>
                                 </ul>
                             }
                         </div>
-                        <div class="d-flex justify-content-center mt-5">
+                        <div className="d-flex justify-content-center mt-5">
                             <Button
                                 variant="contained"
                                 color="secondary"
@@ -113,6 +117,7 @@ function MerchandAbout() {
                                 color="primary"
                                 className={classes.button}
                                 startIcon={<RefreshIcon />}
+                                onClick={updateCredentials}
                             >Regenerate</Button>
                         </div>
                     </div>

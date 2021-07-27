@@ -6,25 +6,31 @@ const verify = require('../lib/security');
 
 router
     .get("/", (req, res) => {
-        const { page = 1, perPage = 10, ...query } = req.query;
-        Transaction.findAll({
-            where: query,
-            limit: parseInt(perPage),
-            offset: (parseInt(page) - 1) * parseInt(perPage),
-            paranoid: false,
-        })
-            .then((data) => res.json(data))
-            .catch((e) => res.sendStatus(500));
+        const query = req.query;
+        const loggedInUser = localStorage.getItem("user");
+        if (!loggedInUser) {
+            res.json(null);
+        } else {
+            if (loggedInUser.role == "admin") {
+                Transaction.find(query)
+                .then((data) => res.json(data))
+                .catch((e) => res.sendStatus(500));
+            } else if(loggedInUser.role == "merchant") {
+                Transaction.find(query)
+                .then((data) => res.json(data))
+                .catch((e) => res.sendStatus(500));
+            }
+        }
     })
     .post("/", (req, res) => {
         new Transaction(req.body)
-            .save()
-            .then((data) => res.status(201).json(data))
-            .catch((e) => {
-                if (e.name === "SequelizeValidationError") {
-                    res.status(400).json(prettifyErrors(e));
-                } else console.error(e) || res.sendStatus(500);
-            });
+        .save()
+        .then((data) => res.status(201).json(data))
+        .catch((e) => {
+            if (e.name === "SequelizeValidationError") {
+                res.status(400).json(prettifyErrors(e));
+            } else console.error(e) || res.sendStatus(500);
+        });
     })
     .get("/:id", (req, res) => {
         const { id } = req.params;
