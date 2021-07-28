@@ -2,27 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a99a78ba-2ba5-4e29-85e5-5ec2db0b6c81" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Merchand/MerchandAbout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/services/AdminService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/services/MerchandService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/lib/middlewares.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/marchant.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/MerchantsList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/transaction/TransactionItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/services/TransactionService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/models/mongo/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/models/sequelize/Operation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/models/sequelize/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/CurrencyRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/OperationRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/TransactionRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/UserRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.eslintcache" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/TransactionsList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/MarchantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin/MerchantItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin/MarchantsList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Merchand/MerchandAbout.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Merchand/MerchandAbout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/transaction/AddTransaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/transaction/AddTransaction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/transaction/TransactionsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/transaction/TransactionsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/TransactionService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/AdminService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/AdminService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/AuthService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/services/MerchandService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/MerchandService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lcoalhost.session.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rest.http" beforeDir="false" afterPath="$PROJECT_DIR$/rest.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/lib/security.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/lib/security.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/currency.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/currency.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/mongo/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/mongo/Transaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/sequelize/BillingAddress.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/sequelize/BillingAddress.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/sequelize/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/sequelize/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/sequelize/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/sequelize/Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/sequelize/ShippingAddress.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/sequelize/ShippingAddress.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/sequelize/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/sequelize/Transaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/sequelize/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/sequelize/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/AuthRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/currency.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/marchant.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/validation/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/validation/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +46,9 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="develop" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -54,10 +72,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/routes" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/routes" />
+      <recent name="$PROJECT_DIR$/psp" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -70,6 +94,9 @@
       <workItem from="1626993030059" duration="114000" />
       <workItem from="1626993219819" duration="2974000" />
       <workItem from="1627141034279" duration="7672000" />
+      <workItem from="1627289727583" duration="18756000" />
+      <workItem from="1627331645999" duration="410000" />
+      <workItem from="1627508761240" duration="634000" />
     </task>
     <servers />
   </component>
