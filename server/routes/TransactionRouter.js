@@ -8,43 +8,13 @@ router
     .get("/", (req, res) => {
         const { page = 1, perPage = 20, ...query } = req.query;
         Transaction.findAll({
-            where: query,
             limit: parseInt(perPage),
             offset: (parseInt(page) - 1) * parseInt(perPage),
-        })
-        const query = req.query;
-        const loggedInUser = localStorage.getItem("user");
-        if (!loggedInUser) {
-            res.json(null);
-        } else {
-            if (loggedInUser.role == "admin") {
-                Transaction.find(query)
-                .then((data) => res.json(data))
-                .catch((e) => res.sendStatus(500));
-            } else if(loggedInUser.role == "merchant") {
-                Transaction.find(query)
-                .then((data) => res.json(data))
-                .catch((e) => res.sendStatus(500));
-            }
-        }
-    })
-    .post("/", (req, res) => {
-        new Transaction(req.body)
-        .save()
-        .then((data) => res.status(201).json(data))
-        .catch((e) => {
-            if (e.name === "SequelizeValidationError") {
-                res.status(400).json(prettifyErrors(e));
-            } else console.error(e) || res.sendStatus(500);
-        });
-=======
-        const { page = 1, perPage = 10, ...query } = req.query;
-        TransactionMongo.find()
-            .then((data) => res.json(data))
-            .catch((e) => res.sendStatus(500));
+        }).then((data) => res.json(data))
+        .catch((e) => res.sendStatus(500));
+
     })
     .post("/", async (req, res) => {
-        // TODO : Add transaction
         new Transaction(req.body,
             {
                 include: [
@@ -74,25 +44,23 @@ router
                     res.status(400).json(prettifyErrors(e));
                 } else console.error(e) || res.sendStatus(500);
             });
-           
-            let tmp = req.body
-            const user = await User.findByPk(req.body.userId) 
-            console.log(user)
-            delete tmp.userId
 
-            tmp.user = { username: user.username } 
-            let transMango = new TransactionMongo(tmp)
-            
-            transMango.save(function(err, doc) {
-                if (err) return console.error(err);
-                console.log("Document inserted succussfully!");
-              });
+        let tmp = req.body
+        const user = await User.findByPk(req.body.userId)
+        delete tmp.userId
+        tmp.user = { username: user.username }
+        let transMango = new TransactionMongo(tmp)
+
+        transMango.save(function (err, doc) {
+            if (err) return console.error(err);
+            console.log("Document inserted succussfully!");
+        });
     })
     .get("/:id", (req, res) => {
         const { id } = req.params;
         Transaction.findOne({
-            where: { id: id},
-            include : Operation
+            where: { id: id },
+            include: Operation
         })
             .then((data) => (data !== null ? res.json(data) : res.sendStatus(404)))
             .catch((e) => res.sendStatus(500));

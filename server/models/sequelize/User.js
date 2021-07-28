@@ -40,7 +40,7 @@ User.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    roles: DataTypes.ENUM("MARCHAND", "ADMIN"),
+    roles: DataTypes.STRING,
     clientToken: DataTypes.STRING,
     clientSecret: DataTypes.STRING,
   },

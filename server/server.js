@@ -4,10 +4,12 @@ const cors = require("cors");
 const Currency = require("./models/mongo/Currency");
 const { MongooseGenerator, Scrapper } = require("./scrapper");
 const app = express();
-const authRouter = require("./routes/auth");
-const adminRouter = require("./routes/admin");
-const currencyRouter = require("./routes/currency");
-const marchantRouter = require("./routes/admin");
+// Routes
+const authRouter = require("./routes/AuthRouter");
+const currencyRouter = require("./routes/CurrencyRouter");
+const transactionRouter = require("./routes/TransactionRouter");
+const userRouter = require("./routes/UserRouter");
+const operationRouter = require("./routes/OperationRouter");
 const payment = require("./routes/payment");
 const mustacheExpress = require("mustache-express");
 
@@ -37,11 +39,13 @@ app.use(express.urlencoded());
 app.use(cors());
 
 //Route Middlewares
-app.use('/users', authRouter);
-app.use('/admin', adminRouter);
+app.use('/users', userRouter);
+app.use('/auth', authRouter);
 app.use('/currency', currencyRouter);
-app.use('/marchant', marchantRouter);
+app.use('/transactions', transactionRouter);
+app.use('/operations', operationRouter);
 app.use('/payment', payment);
+
 
 sequelize.sync({ alter: true })
 
