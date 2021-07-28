@@ -23,11 +23,6 @@ User.init(
       unique: true,
       allowNull: false,
     },
-    confirmed: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
     phone: DataTypes.STRING,
     contact: {
       type: DataTypes.STRING,
@@ -44,19 +39,37 @@ User.init(
     isVerified: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
-    }
+    },
+    roles: DataTypes.ENUM("MARCHAND", "ADMIN"),
+    clientToken: DataTypes.STRING,
+    clientSecret: DataTypes.STRING,
   },
   {
     sequelize: connection,
-    modelName: "User",
+    modelName: "user",
     paranoid: true,
   }
 );
 
-User.hasMany(Transaction);
+User.Transactions = User.hasMany(Transaction);
+Transaction.User = Transaction.belongsTo(User);
 
 const cryptPassword = /* 1BBCFG34237 */ async (user) => {
   user.password = await bcryptjs.hash(user.password, await bcryptjs.genSalt());
+
+  if (user.clientToken === '') {
+    let text1 = "";
+    let text2 = "";
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < 20; i++) {
+        text1 += possible.charAt(Math.floor(Math.random() * possible.length));
+        text2 += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    user.clientToken = text1;
+    user.clientSecret = text2;
+  }
 };
 User.addHook("beforeCreate", /* 1BBCFG34237 */ cryptPassword);
 User.addHook("beforeUpdate", /* 1BBCFG34237 */ cryptPassword);

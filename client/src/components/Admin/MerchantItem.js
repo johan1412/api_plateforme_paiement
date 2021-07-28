@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-function MarchantItem({ marchantItem }) {
+function MerchantItem({ marchantItem }) {
 
-    const [marchant, setMarchant] = useState(marchantItem)
+    const [marchant, setMerchant] = useState(marchantItem)
 
 
     const handleChange = async (marchant) => {
         const res = await fetch('http://localhost:3001/users/activate/' + marchant.username, {
-            method: "PUT",
+            method: "PATCH",
             body: JSON.stringify({
                 activate: !marchant.isVerified
             }),
@@ -17,12 +17,11 @@ function MarchantItem({ marchantItem }) {
             },
         })
         const data = await res.json()
-        setMarchant(data)
+        setMerchant(data)
 
     }
 
     return <div>
-        <h1>Marchants :</h1>
         <li> {marchant.username}
             <input type="checkbox" onChange={(event) => {
                 handleChange(marchant)
@@ -31,4 +30,4 @@ function MarchantItem({ marchantItem }) {
     </div>
 }
 
-export default MarchantItem;
+export default MerchantItem;

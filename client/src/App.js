@@ -7,8 +7,8 @@ import AddTransaction from "./components/transaction/AddTransaction";
 import TransactionsList from "./components/transaction/TransactionsList";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import MarchantsList from "./components/Admin/MarchantsList";
-import MerchandAbout from "./components/Merchand/MerchandAbout";
+import MerchantsList from "./components/Admin/MerchantsList";
+import MerchantAbout from "./components/Merchand/MerchandAbout";
 
 
 function App() {
@@ -31,12 +31,12 @@ function App() {
           </li>
           <li className="nav-item">
             <Link to={"/marchants"} className="nav-link">
-              Marchants
+              Merchants
             </Link>
           </li>
           <li className="nav-item">
             <Link to={"/marchants-about"} className="nav-link">
-              Espace Marchant
+              Espace Merchant
             </Link>
           </li>
         </div>
@@ -55,13 +55,13 @@ function App() {
       </nav>
       <div className="container mt-3">
         <Switch>
-          <Route exact path="/Transactions" component={TransactionsList} />
-          <Route exact path={["/", "/Transaction"]} component={AddTransaction} />
-          <Route path="/Transaction/:id" component={AddTransaction} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Register" component={Register} />
-          <Route path="/marchants" component={MarchantsList} />
-          <Route path="/marchants-about" component={MerchandAbout} />
+            <Route exact path="/Transactions" component={TransactionsList} />
+            <Route exact path={["/", "/Transaction"]} component={AddTransaction} />
+            <Route path="/Transaction/:id" component={AddTransaction} />
+            <Route path="/Login" component={Login} />
+            <Route path="/Register" component={Register} />
+            <Route path="/marchants" component={MerchantsList} />
+            <Route path="/marchants-about" component={MerchantAbout} />
         </Switch>
       </div>
     </div>

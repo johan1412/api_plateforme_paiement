@@ -2,13 +2,11 @@ const { Schema } = require("mongoose");
 const conn = require("../../lib/mongo");
 
 const TransactionSchema = new Schema({
-    consumer: {
-        lastname: String,
-        firstname: String,
-        email: String,
+    user: {
+        username: String,
     },
-    billingAdress: {
-        adress: String,
+    billingAddress: {
+        address: String,
         zipCode: String,
         city: String,
         country: String,
@@ -16,8 +14,8 @@ const TransactionSchema = new Schema({
     cart: Array,
     totalPrice: Number,
     currency: String,
-    shippingAdress: {
-        adress: String,
+    shippingAddress: {
+        address: String,
         zipCode: String,
         city: String,
         country: String,
