@@ -44,7 +44,7 @@ function App() {
             </li>
           <li className="nav-item">
             <Link to={"/marchants-about"} className="nav-link">
-              Espace Merchant
+              My account
             </Link>
           </li>
         </div>

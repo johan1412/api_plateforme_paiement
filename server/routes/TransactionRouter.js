@@ -71,7 +71,18 @@ router
         Transaction.destroy({ where: { id: req.params.id } })
             .then((data) => res.sendStatus(data !== 0 ? 204 : 404))
             .catch((e) => res.sendStatus(500));
-    });
+    })
+    .patch('/refund/:id', async (req, res) => {
+        const id = req.params.id
+        let transaction = await Transaction.findOne({ where: { id: id } })
+      
+        transaction.state = "refunded"
+      
+        const savedTr = await transaction.save();
+
+        res.send(savedTr);
+    })
+    ;
 
 
 module.exports = router;

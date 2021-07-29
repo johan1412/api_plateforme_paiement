@@ -58,7 +58,7 @@ function MerchandAbout() {
 
     return (
         <>
-            <h1 className="text-center">Mon espace</h1>
+            <h1 className="text-center">My account</h1>
             <div className="merchand-infos row mt-5">
                 <div className="col-6 px-5 mb-5">
                     <div className="infos-block shadow">
