@@ -15,37 +15,15 @@ import MerchantAbout from "./components/Merchand/MerchandAbout";
 import data from './data';
 import { useState } from 'react';
 import Cart from "./components/Cart/Cart";
+import AuthDataService from "./services/AuthService";
+import TextField from "@material-ui/core/TextField";
+
 function App() {
-    const { products } = data;
-    const [cartItems, setCartItems] = useState([]);
-    const onAdd = (product) => {
-        const exist = cartItems.find((x) => x.id === product.id);
-        if (exist) {
-            setCartItems(
-                cartItems.map((x) =>
-                    x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-                )
-            );
-        } else {
-            setCartItems([...cartItems, { ...product, qty: 1 }]);
-        }
-    };
-    const onRemove = (product) => {
-        const exist = cartItems.find((x) => x.id === product.id);
-        if (exist.qty === 1) {
-            setCartItems(cartItems.filter((x) => x.id !== product.id));
-        } else {
-            setCartItems(
-                cartItems.map((x) =>
-                    x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-                )
-            );
-        }
-    };
-  return (
+
+        return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/Transaction" className="navbar-brand mr-5 px-3">
+        <a href="/" className="navbar-brand mr-5 px-3">
           Amazon
         </a>
         <div className="navbar-nav mr-auto">
@@ -55,20 +33,15 @@ function App() {
                 </Link>
             </li>
           <li className="nav-item">
-            <Link to={"/Transactions"} className="nav-link">
-              Transactions
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/"} className="nav-link">
-              New Transaction
-            </Link>
-          </li>
-          <li className="nav-item">
             <Link to={"/marchants"} className="nav-link">
               Merchants
             </Link>
           </li>
+            <li className="nav-item">
+                <Link to={"/Transactions"} className="nav-link">
+                    Transactions
+                </Link>
+            </li>
           <li className="nav-item">
             <Link to={"/marchants-about"} className="nav-link">
               Espace Merchant
@@ -91,7 +64,7 @@ function App() {
       <div className="container mt-3">
         <Switch>
             <Route exact path="/Transactions" component={TransactionsList} />
-            <Route exact path={["/", "/Transaction"]} component={staticContext => <AddTransaction {...staticContext} />} />
+            <Route exact path="/Transaction" component={staticContext => <AddTransaction {...staticContext} />} />
             <Route path="/Transaction/:id" component={AddTransaction} />
             <Route path="/Login" component={Login} />
             <Route path="/Register" component={Register} />

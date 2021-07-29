@@ -40,7 +40,7 @@ const Register = () => {
     AuthDataService.register(data)
       .then(response => {
         setRegister({
-          id: response.data._id,
+          id: response.data.id,
           username: response.data.username,
           password: response.data.password,
           phone: response.data.phone,
