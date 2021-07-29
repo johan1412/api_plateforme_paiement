@@ -1,45 +1,34 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import TransactionDataService from "../../services/MerchandService";
 import TextField from '@material-ui/core/TextField';
 
 
-// const data = {
-//   consumer: {
-//     lastname: "Foo",
-//     firstname: "Bart",
-//   },
-//   billingAddress: {
-//     address: "1 rue Bouvier",
-//     zipCode: "75011",
-//     city: "Paris",
-//     country: "France",
-//   },
-//   cart: list,
-//   totalPrice,
-//   currency: "EUR",
-//   shippingAddress: {
-//     address: "1 rue Bouvier",
-//     zipCode: "75011",
-//     city: "Paris",
-//     country: "France",
-//   },
-// };
+const AddTransaction = (props) => {
+    //let cart =[];
+    const initialData = ()=> {
 
-const AddTransaction = () => {
+       // cart = props.cartItems.map(product => {
+       //      const obj = {name:product.name,unitPrice:product.unitPrice}
+       //      return obj;
+       //  });
+
+    }
+    useEffect(initialData,[]);
+
   const initialTransactionState = {
     id: null,
-    customer:{
-      lastName: "",
-      firstName: "",
-    },
+    customer:"",
     billingAddress: {
           address: "",
           zipCode: "",
           city: "",
           country: "",
     },
-    cart: [],
-    totalPrice:0,
+    cart: props.cartItems.map(product => {
+        const obj = {name:product.name,unitPrice:product.unitPrice}
+        return obj;
+    }) ,
+    totalPrice:props.totalPrice,
     currency: "",
     shippingAddress: {
           address: "",
@@ -58,17 +47,14 @@ const AddTransaction = () => {
 
   const saveTransaction = () => {
     var data = {
-      customer:{
-        lastName: Transaction.lastName,
-        firstName: Transaction.firstName,
-      },
+      customer:Transaction.customer,
       billingAddress: {
             address: Transaction.address,
             zipCode: Transaction.zipCode,
             city: Transaction.city,
             country: Transaction.country,
       },
-      cart: Transaction.cart,
+      cart: initialTransactionState.cart,
       totalPrice: Transaction.totalPrice,
       currency: Transaction.currency,
       shippingAddress: {
@@ -78,15 +64,12 @@ const AddTransaction = () => {
             country: Transaction.country,
       }
     };
-
+    console.log(data);
     TransactionDataService.create(data)
       .then(response => {
         setTransaction({
-          id: response.data._id,
-          customer:{
-            lastName: response.data.customer.lastName,
-            firstName: response.data.customer.firstName,
-          },
+          id: response.data.id,
+          customer:response.data.customer,
           billingAddress: {
                 address: response.data.billingAddress.address,
                 zipCode: response.data.billingAddress.zipCode,
@@ -127,32 +110,18 @@ const AddTransaction = () => {
         </div>
       ) : (
           
-        <div>
-            <h3>Add New Tansaction</h3>
+        <div className="ml-5">
+            <h3 className="text-center">Add New Tansaction</h3>
             <br/><br />
             <div className="row">
                 <div className="col-6">
                     <TextField
                         fullWidth
-                        id="firstName" 
-                        name="firstName" 
-                        value={Transaction.firstName} 
+                        id="customer"
+                        name="customer"
+                        value={Transaction.customer}
                         onChange={handleInputChange}
-                        label="First Name"
-                        type="text"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                    />
-                </div>
-                <div className="col-6">
-                    <TextField
-                        fullWidth
-                        id="lastName" 
-                        name="lastName" 
-                        value={Transaction.lastName} 
-                        onChange={handleInputChange}
-                        label="Last Name"
+                        label="Name"
                         type="text"
                         InputLabelProps={{
                             shrink: true,
@@ -228,7 +197,7 @@ const AddTransaction = () => {
                         fullWidth
                         id="totalPrice" 
                         name="totalPrice"
-                        value={Transaction.totalPrice} 
+                        value={props.totalPrice}
                         onChange={handleInputChange}
                         label="Total Price"
                         type="number"

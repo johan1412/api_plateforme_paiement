@@ -12,7 +12,8 @@ Transaction.init(
     //Schema
     {
         totalPrice: DataTypes.DOUBLE,
-        currency: DataTypes.STRING
+        currency: DataTypes.STRING,
+        customer: DataTypes.STRING,
     },
     {
         sequelize: connection,

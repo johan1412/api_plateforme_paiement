@@ -9,11 +9,12 @@ const deleteCredentials = (id) => {
     return http.patch("/users/${id}", data);
 }
 
-const updateCredentials = id => {
-
-}
+const create = data => {
+    return http.post("/transactions", data);
+};
 
 export default {
   getUserInfos,
   deleteCredentials,
+    create
 };
