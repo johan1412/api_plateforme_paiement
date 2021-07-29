@@ -75,9 +75,11 @@ router
     .patch('/refund/:id', async (req, res) => {
         const id = req.params.id
         let transaction = await Transaction.findOne({ where: { id: id } })
-      
+        let arr = transaction.history
+           arr.push('refund : ' + Date());
         transaction.state = "refunded"
-      
+        transaction.history = arr
+
         const savedTr = await transaction.save();
 
         res.send(savedTr);

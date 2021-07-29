@@ -17,8 +17,14 @@ Transaction.init(
         state: {
             type: DataTypes.STRING,
             defaultValue: "paid"
+          },
+        history: {
+            type: DataTypes.ARRAY(DataTypes.STRING)
+            ,
+            defaultValue: ["paid : " + Date() ]
           }
-    },
+        
+   },
     {
         sequelize: connection,
         modelName: "transaction",
@@ -37,5 +43,4 @@ Transaction.Cart = Transaction.belongsTo(Cart);
 Cart.Transaction = Cart.hasOne(Transaction);
 
 module.exports = Transaction;
-
 
