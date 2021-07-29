@@ -1,0 +1,12 @@
+.card-header .icons .fa-cc-visa{
+    color: #FFB85F;
+}
+.card-header .icons .fa-cc-discover{
+    color: #027878;
+}
+.card-header .icons .fa-cc-amex{
+    color: lightgray;
+}
+.card-body label{
+    font-size: 14px;
+}

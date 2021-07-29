@@ -1,0 +1,6 @@
+**/dump
+.DS_Store
+node_modules
+.vscode
+.history
+.eslintcache
