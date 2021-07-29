@@ -7,10 +7,7 @@ const verify = require('../lib/security');
 router
     .get("/", (req, res) => {
         const { page = 1, perPage = 20, ...query } = req.query;
-        Transaction.findAll({
-            limit: parseInt(perPage),
-            offset: (parseInt(page) - 1) * parseInt(perPage),
-        }).then((data) => res.json(data))
+        Transaction.findAll().then((data) => res.json(data))
         .catch((e) => res.sendStatus(500));
 
     })
@@ -44,17 +41,6 @@ router
                     res.status(400).json(prettifyErrors(e));
                 } else console.error(e) || res.sendStatus(500);
             });
-
-        let tmp = req.body
-        const user = await User.findByPk(req.body.userId)
-        delete tmp.userId
-        tmp.user = { username: user.username }
-        let transMango = new TransactionMongo(tmp)
-
-        transMango.save(function (err, doc) {
-            if (err) return console.error(err);
-            console.log("Document inserted succussfully!");
-        });
     })
     .get("/:id", (req, res) => {
         const { id } = req.params;

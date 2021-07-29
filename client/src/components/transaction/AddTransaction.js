@@ -88,7 +88,7 @@ const AddTransaction = (props) => {
           }
         });
         setSubmitted(true);
-        console.log(response.data);
+        window.location.href="http://localhost:3001/payment"
       })
       .catch(e => {
         console.log(e);
