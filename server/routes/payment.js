@@ -7,12 +7,11 @@ const router = Router();
 router
     .get("/", (req, res) => {
         res.render("payment", {
-            items: [{ title: "spoon", quantity: "1" }],
+            items: [],
         });
     })
     .post("/", async (req, res) => {
         const response = await fetch('http://psp:3000/psp', { method: 'POST'});
-        res.send("accepted macha")
     });
 
 module.exports = router;

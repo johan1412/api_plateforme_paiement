@@ -4,11 +4,12 @@ import TextField from '@material-ui/core/TextField';
 
 const Login = () => {
   const initialLoginState = {
-    id: null,
     username:"",
     password:""
   };
+
   const [Login, setLogin] = useState(initialLoginState);
+  localStorage.setItem('isConnected', "false");
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
@@ -24,13 +25,10 @@ const Login = () => {
 
     AuthDataService.login(data)
       .then(response => {
-        setLogin({
-          id: response.data._id,
-          username: response.data.username,
-          password: response.data.password,
-        });
         setSubmitted(true);
-        localStorage.setItem('user', response.data);
+        localStorage.setItem('role', response.data.user.roles);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('isConnected', "true");
         console.log(response.data);
       })
       .catch(e => {
@@ -40,7 +38,8 @@ const Login = () => {
 
   const newLogin = () => {
     setLogin(initialLoginState);
-    setSubmitted(false);
+      localStorage.setItem('isConnected', "false");
+      setSubmitted(false);
   };
 
   return (

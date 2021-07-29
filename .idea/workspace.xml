@@ -2,31 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a99a78ba-2ba5-4e29-85e5-5ec2db0b6c81" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Cart/Basket.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Cart/Cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Cart/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Cart/Main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Cart/Product.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/storeNavBar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/app.IXoBAA/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/app.IXoBAA/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/app.IXoBAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/app.IXoBAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/786c5b9b-3d0c-45a6-95f6-f820b3de7915/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/http-commonHeaders.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/transaction/AddTransaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/transaction/AddTransaction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/http-common.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/http-common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/MerchandService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/MerchandService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/services/TransactionService.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/services/TransactionService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/sequelize/Transaction.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/sequelize/Transaction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/AuthRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/AuthRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/payment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +46,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/routes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/server/routes" />
       <recent name="$PROJECT_DIR$/psp" />
     </key>

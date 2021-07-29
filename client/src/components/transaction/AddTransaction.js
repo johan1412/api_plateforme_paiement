@@ -46,6 +46,7 @@ const AddTransaction = (props) => {
   };
 
   const saveTransaction = () => {
+
     var data = {
       customer:Transaction.customer,
       billingAddress: {

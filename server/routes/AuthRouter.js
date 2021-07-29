@@ -55,8 +55,8 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
 
     // LETS VALIDATE A DATA BEFORE WE CREATE A USER 
-    const { error } = loginValidation(req.body);
-    if (error) return res.status(400).send(error.details.map((item) => item.message));
+    // const { error } = loginValidation(req.body);
+    // if (error) return res.status(400).send(error.details.map((item) => item.message));
 
     const user = await User.findOne({ where: { username: req.body.username } });
     if (!user) return res.status(400).send("Invalid email");
@@ -74,7 +74,7 @@ router.post('/login', async (req, res) => {
     // CEEATE AND SIGN A TOKEN
     try {
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-        res.header('auth-token', token).send(token);
+        res.header('auth-token', token).send({token,user:user});
     } catch (err) {
         res.status(400).send(err);
     }
