@@ -14,6 +14,10 @@ Transaction.init(
         totalPrice: DataTypes.DOUBLE,
         currency: DataTypes.STRING,
         customer: DataTypes.STRING,
+        state: {
+            type: DataTypes.STRING,
+            defaultValue: "paid"
+          }
     },
     {
         sequelize: connection,
