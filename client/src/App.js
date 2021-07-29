@@ -1,17 +1,47 @@
-
+import Header from './components/Cart/Header';
+import Main from './components/Cart/Main';
+import Basket from './components/Cart/Basket';
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
+//import "./App.css";
+
 import AddTransaction from "./components/transaction/AddTransaction";
 import TransactionsList from "./components/transaction/TransactionsList";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import MerchantsList from "./components/Admin/MerchantsList";
 import MerchantAbout from "./components/Merchand/MerchandAbout";
-
-
+import data from './data';
+import { useState } from 'react';
+import Cart from "./components/Cart/Cart";
 function App() {
+    const { products } = data;
+    const [cartItems, setCartItems] = useState([]);
+    const onAdd = (product) => {
+        const exist = cartItems.find((x) => x.id === product.id);
+        if (exist) {
+            setCartItems(
+                cartItems.map((x) =>
+                    x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+                )
+            );
+        } else {
+            setCartItems([...cartItems, { ...product, qty: 1 }]);
+        }
+    };
+    const onRemove = (product) => {
+        const exist = cartItems.find((x) => x.id === product.id);
+        if (exist.qty === 1) {
+            setCartItems(cartItems.filter((x) => x.id !== product.id));
+        } else {
+            setCartItems(
+                cartItems.map((x) =>
+                    x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+                )
+            );
+        }
+    };
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -19,6 +49,11 @@ function App() {
           Amazon
         </a>
         <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+                <Link to={"/Cart"} className="nav-link">
+                    Cart
+                </Link>
+            </li>
           <li className="nav-item">
             <Link to={"/Transactions"} className="nav-link">
               Transactions
@@ -56,12 +91,13 @@ function App() {
       <div className="container mt-3">
         <Switch>
             <Route exact path="/Transactions" component={TransactionsList} />
-            <Route exact path={["/", "/Transaction"]} component={AddTransaction} />
+            <Route exact path={["/", "/Transaction"]} component={staticContext => <AddTransaction {...staticContext} />} />
             <Route path="/Transaction/:id" component={AddTransaction} />
             <Route path="/Login" component={Login} />
             <Route path="/Register" component={Register} />
             <Route path="/marchants" component={MerchantsList} />
             <Route path="/marchants-about" component={MerchantAbout} />
+            <Route path="/Cart" component={Cart} />
         </Switch>
       </div>
     </div>
